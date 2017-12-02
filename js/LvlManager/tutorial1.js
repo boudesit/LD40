@@ -4,6 +4,9 @@ function tutorial1(game) {
 	this.murCenter = null;
 	this.murDroite = null;
 	this.murGauche = null;
+
+  this.lvlManager = null;
+  this.exit = null;
 };
 
 tutorial1.prototype.create = function create() {
@@ -35,6 +38,10 @@ tutorial1.prototype.create = function create() {
 	this.murGauche.body.setSize(10, 600, 0, 0);
 	this.murGroup.add(this.murGauche);
 
+  this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+  this.exit.onDown.add(this.lvlEnding, this);
+
+
 };
 
 
@@ -44,7 +51,11 @@ tutorial1.prototype.update = function update() {
 
 };
 
+tutorial1.prototype.lvlEnding = function lvlEnding(){
 
+    this.lvlManager = new lvlManager(this.game, 1);
+    this.lvlManager.create();
+};
 
 tutorial1.prototype._getMur = function _getMur() {
   return this.murGroup;

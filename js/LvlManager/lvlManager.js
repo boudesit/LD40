@@ -15,6 +15,11 @@ lvlManager.prototype.create = function create() {
     console.log(this.lvlNumber);
 
     this.lvl = new tutorial1(this.game);
+    this.lvl.create();
+
+  } else if (this.lvlNumber == 1) {
+    console.log(this.lvlNumber);
+
   }
 
 };
@@ -22,7 +27,6 @@ lvlManager.prototype.create = function create() {
 
 
 lvlManager.prototype.update = function update() {
-
 
 };
 
