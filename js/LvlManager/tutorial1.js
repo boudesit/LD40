@@ -1,8 +1,8 @@
 function tutorial1(game) {
 	this.game = game;
   this.murGroup = this.game.add.group();
-	this.murCenter = null;
-	this.murDroite = null;
+	this.plateform1 = null;
+	this.plateform2 = null;
 	this.murGauche = null;
 
   this.lvlManager = null;
@@ -12,22 +12,22 @@ function tutorial1(game) {
 tutorial1.prototype.create = function create() {
 
 	//mur center
-	this.murCenter = this.game.add.sprite(0, 0, null);
-	this.game.physics.enable(this.murCenter);
-	this.murCenter.physicsBodyType = Phaser.Physics.ARCADE;
-	this.murCenter.enableBody = true;
-	this.murCenter.body.immovable = true;
-	this.murCenter.body.setSize(800, 10, 0, 400);
-  this.murGroup.add(this.murCenter);
+	this.plateform1 = this.game.add.sprite(150, 20, 'plateform');
+	this.game.physics.enable(this.plateform1);
+	this.plateform1.physicsBodyType = Phaser.Physics.ARCADE;
+	this.plateform1.enableBody = true;
+	this.plateform1.body.immovable = true;
+	this.plateform1.body.setSize(150, 20, 0, 0);
+  this.murGroup.add(this.plateform1);
 
 	//mur Droite
-	this.murDroite = this.game.add.sprite(0, 0, null);
-	this.game.physics.enable(this.murDroite);
-	this.murDroite.physicsBodyType = Phaser.Physics.ARCADE;
-	this.murDroite.enableBody = true;
-	this.murDroite.body.immovable = true;
-	this.murDroite.body.setSize(10, 600, 0, 600);
-	this.murGroup.add(this.murCenter);
+	this.plateform2 = this.game.add.sprite(200, 20, 'plateform');
+	this.game.physics.enable(this.plateform2);
+	this.plateform2.physicsBodyType = Phaser.Physics.ARCADE;
+	this.plateform2.enableBody = true;
+	this.plateform2.body.immovable = true;
+	this.plateform2.body.setSize(150, 20, 0, 0);
+	this.murGroup.add(this.plateform2);
 
 	//mur Gauche
 	this.murGauche = this.game.add.sprite(0, 0, null);
