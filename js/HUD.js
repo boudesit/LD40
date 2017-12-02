@@ -3,7 +3,7 @@ function HUD(game) {
 	this.ressourcesManager = null;
 	this.player = null;
 	this.computer = null;
-	this.map = null;
+	this.lvlManager = null;
   this.music = null;
 	this.music = null;
   this.spriteBG = null;
@@ -18,18 +18,8 @@ HUD.prototype.create = function create() {
 	this.timeDelay = 0;
    this.spriteBG =  game.add.tileSprite(0 , 0, 800, 600, 'background');
 
-	 this.ressourcesManager = new RessourcesManager(this.game);
-   this.ressourcesManager.create();
-
-	 this.player = new Player(this.game);
-   this.player.create();
-
-	 this.computer = new Computer(this.game);
-   this.computer.create();
-
-
-	 this.map = new map(this.game);
- 	 this.map.create();
+	 this.lvlManager = new lvlManager(this.game, 0);
+ 	 this.lvlManager.create();
 
 	 this.explosionSound = game.add.audio('explosionSound');
  	 this.explosion  = game.add.sprite(-100,-100, 'explosion');
@@ -52,46 +42,52 @@ HUD.prototype.create = function create() {
 
 
 HUD.prototype.update = function update() {
-  this.player.update();
-	this.computer.update();
-
-	this.player.getPlayerUnitRockGroupRessource().forEach(this.moveUnitRockTowardRessources, this);
-	this.player.getPlayerUnitWaterGroupRessource().forEach(this.moveUnitWaterTowardRessources, this);
-	this.player.getPlayerUnitFoodGroupRessource().forEach(this.moveUnitFoodTowardRessources, this);
 
 
-	//  Run collision
-	game.physics.arcade.collide(  this.player.getPlayerUnitGroup() , this.player.getPlayerUnitGroup()  , null, null, this);
-	game.physics.arcade.collide(  this.computer.getComputerUnitGroup() , this.computer.getComputerUnitGroup()  , null, null, this);
-
-	// collision Castle
-	game.physics.arcade.collide(  this.player.getPlayerUnitGroup() , this.computer.getComputerCastle() , this.computeFightCastle, null, this);
-	game.physics.arcade.collide(  this.computer.getComputerUnitGroup() , this.player.getPlayerCastle() , this.computeFightCastle, null, this);
-
-	//Fight unit
-	game.physics.arcade.overlap(  this.player.getPlayerUnitGroup() , this.computer.getComputerUnitGroup() , this.computeFight, null, this);
-
-	// collide ressources
-	game.physics.arcade.collide(this.player.getPlayerUnitRockGroupRessource(), this.ressourcesManager.getRockSprite(),this.computeRessources, null, this);
-	game.physics.arcade.collide(this.player.getPlayerUnitWaterGroupRessource(), this.ressourcesManager.getWaterSprite(),this.computeRessources, null, this);
-	game.physics.arcade.collide(this.player.getPlayerUnitFoodGroupRessource(), this.ressourcesManager.getFoodSprite(),this.computeRessources, null, this);
-
-	// game.physics.arcade.collide(this.player.getPlayerUnitRockGroupRessource(), this.player.getPlayerCastle() , this.addRessources, null, this);
-	// game.physics.arcade.collide(this.player.getPlayerUnitWaterGroupRessource(), this.player.getPlayerCastle() , this.addRessources, null, this);
-	// game.physics.arcade.collide(this.player.getPlayerUnitFoodGroupRessource(), this.player.getPlayerCastle() , this.addRessources, null, this);
 
 
-	if((this.fight != null && this.fight.isFinnish()) || (this.fightCastle != null && this.fightCastle.isFinnish())) {
-		if(this.player.getPlayerUnitGroup() != null)
-		{
-			this.player.getPlayerUnitGroup().setAll("body.velocity.x", 60);
-		}
 
-		if(this.computer.getComputerUnitGroup() != null)
-		{
-			this.computer.getComputerUnitGroup().setAll("body.velocity.x", -60);
-		}
-	}
+
+  // this.player.update();
+	// this.computer.update();
+  //
+	// this.player.getPlayerUnitRockGroupRessource().forEach(this.moveUnitRockTowardRessources, this);
+	// this.player.getPlayerUnitWaterGroupRessource().forEach(this.moveUnitWaterTowardRessources, this);
+	// this.player.getPlayerUnitFoodGroupRessource().forEach(this.moveUnitFoodTowardRessources, this);
+  //
+  //
+	// //  Run collision
+	// game.physics.arcade.collide(  this.player.getPlayerUnitGroup() , this.player.getPlayerUnitGroup()  , null, null, this);
+	// game.physics.arcade.collide(  this.computer.getComputerUnitGroup() , this.computer.getComputerUnitGroup()  , null, null, this);
+  //
+	// // collision Castle
+	// game.physics.arcade.collide(  this.player.getPlayerUnitGroup() , this.computer.getComputerCastle() , this.computeFightCastle, null, this);
+	// game.physics.arcade.collide(  this.computer.getComputerUnitGroup() , this.player.getPlayerCastle() , this.computeFightCastle, null, this);
+  //
+	// //Fight unit
+	// game.physics.arcade.overlap(  this.player.getPlayerUnitGroup() , this.computer.getComputerUnitGroup() , this.computeFight, null, this);
+  //
+	// // collide ressources
+	// game.physics.arcade.collide(this.player.getPlayerUnitRockGroupRessource(), this.ressourcesManager.getRockSprite(),this.computeRessources, null, this);
+	// game.physics.arcade.collide(this.player.getPlayerUnitWaterGroupRessource(), this.ressourcesManager.getWaterSprite(),this.computeRessources, null, this);
+	// game.physics.arcade.collide(this.player.getPlayerUnitFoodGroupRessource(), this.ressourcesManager.getFoodSprite(),this.computeRessources, null, this);
+  //
+	// // game.physics.arcade.collide(this.player.getPlayerUnitRockGroupRessource(), this.player.getPlayerCastle() , this.addRessources, null, this);
+	// // game.physics.arcade.collide(this.player.getPlayerUnitWaterGroupRessource(), this.player.getPlayerCastle() , this.addRessources, null, this);
+	// // game.physics.arcade.collide(this.player.getPlayerUnitFoodGroupRessource(), this.player.getPlayerCastle() , this.addRessources, null, this);
+  //
+  //
+	// if((this.fight != null && this.fight.isFinnish()) || (this.fightCastle != null && this.fightCastle.isFinnish())) {
+	// 	if(this.player.getPlayerUnitGroup() != null)
+	// 	{
+	// 		this.player.getPlayerUnitGroup().setAll("body.velocity.x", 60);
+	// 	}
+  //
+	// 	if(this.computer.getComputerUnitGroup() != null)
+	// 	{
+	// 		this.computer.getComputerUnitGroup().setAll("body.velocity.x", -60);
+	// 	}
+	// }
 
 
 
