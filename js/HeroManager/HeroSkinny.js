@@ -39,5 +39,17 @@ HeroSkinny.prototype.getSpeedLadder = function getSpeedLadder() {
 };
 
 HeroSkinny.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
-		 sprite.animations.play('hero_light_walk');
+		sprite.animations.play('hero_light_idle');
+};
+
+HeroSkinny.prototype.getAnimationWalk = function getAnimationWalk(sprite) {
+		sprite.animations.play('hero_light_walk');
+};
+
+HeroSkinny.prototype.getAnimationJump = function getAnimationJump(sprite) {
+		sprite.animations.play('hero_light_jump');
+};
+
+HeroSkinny.prototype.getAnimationClimb = function getAnimationClimb(sprite) {
+		sprite.animations.play('hero_light_climb');
 };
