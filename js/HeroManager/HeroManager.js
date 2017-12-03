@@ -68,15 +68,10 @@ HeroManager.prototype = {
 						this.sprite.body.velocity.x = this._getHeroProperties().getSpeed();
 				}
 
-				//saut
-        if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.time.now > this.jumpTimer)
-        {
-            this.sprite.body.velocity.y = - this._getHeroProperties().getJump();
-						//ajouter un jump timer selon la corpulance
-            this.jumpTimer = game.time.now + this._getHeroProperties().getJumpDuration();
-        }
+
 
 				//utiliser pouvoire
+
 
 				//entrer porte et portebonus
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getDoors() , this._onDoors, null, this);
@@ -85,7 +80,9 @@ HeroManager.prototype = {
 
 
 				//collision
-				game.physics.arcade.collide(  this._getSprite() , this.level._getlvl().getPlateforms() , null, null, this);
+				game.physics.arcade.collide(  this._getSprite() , this.level._getlvl().getPlateforms() , this._jump, null, this);
+				//ba si tu collide avec le sol ba vas te faire foutre
+				//game.physics.arcade.collide(  this._getSprite() , this.game.collideWorldBounds , this._jump, null, this);
 
 				//monter à l'echelle
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getScales() , this._climbLadder, null, this);
@@ -105,6 +102,18 @@ HeroManager.prototype = {
 					//chargé le niveau suivant
 					//this.level.getNextLvl();
 				}
+
+			},
+
+			_jump : function(hero,platform) {
+
+				//saut
+        if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.time.now > this.jumpTimer)
+        {
+            this.sprite.body.velocity.y = - this._getHeroProperties().getJump();
+						//ajouter un jump timer selon la corpulance
+            this.jumpTimer = game.time.now + this._getHeroProperties().getJumpDuration();
+        }
 
 			},
 
