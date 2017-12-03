@@ -14,6 +14,7 @@ platform.prototype.create = function create() {
 	this.platformSprite.physicsBodyType = Phaser.Physics.ARCADE;
 	this.platformSprite.enableBody = true;
 	this.platformSprite.body.immovable = true;
+	this.platformSprite.body.moves = false;
 	this.platformSprite.body.setSize(150, 20, 0, 0);
 
 
