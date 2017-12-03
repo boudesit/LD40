@@ -2,8 +2,9 @@ var HeroFat = function(game) {
 
 	this.game = game;
   this.speed = 100;
-	this.jump = 10;
-	this.jumpDuration = 50;
+	this.speedLadder = 50;
+	this.jump = 0;
+	this.jumpDuration = 1500;
 	this.portebonus = false;
 }
 
@@ -33,4 +34,8 @@ HeroFat.prototype.getJumpDuration = function getJumpDuration() {
 
 HeroFat.prototype.getCanPorteBonus = function getCanPorteBonus() {
 	return this.portebonus;
+};
+
+HeroFat.prototype.getSpeedLadder = function getSpeedLadder() {
+	return this.speedLadder;
 };

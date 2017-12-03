@@ -112,8 +112,12 @@ HeroManager.prototype = {
 				this.sprite.body.velocity.y = -8.5;
 				if (game.input.keyboard.isDown(Phaser.Keyboard.W))
         {
-            this.sprite.body.velocity.y = -70;
+            this.sprite.body.velocity.y = - this._getHeroProperties().getSpeedLadder();
         }
+				if (game.input.keyboard.isDown(Phaser.Keyboard.S))
+				{
+						this.sprite.body.velocity.y = this._getHeroProperties().getSpeedLadder();
+				}
 			},
 
 		 _eatBurger : function(hero,burger) {
