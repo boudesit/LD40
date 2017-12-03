@@ -35,3 +35,7 @@ lvlManager.prototype.update = function update() {
 lvlManager.prototype._getMur = function _getMur() {
   return this.murGroup;
 };
+
+lvlManager.prototype._getlvl = function _getlvl() {
+  return this.lvl;
+};
