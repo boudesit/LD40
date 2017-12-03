@@ -15,6 +15,11 @@ platform.prototype.create = function create() {
 	this.platformSprite.enableBody = true;
 	this.platformSprite.body.immovable = true;
 	this.platformSprite.body.moves = false;
+	this.platformSprite.body.checkCollision.up = true;
+	this.platformSprite.body.checkCollision.down = false;
+	this.platformSprite.body.checkCollision.right = false;
+	this.platformSprite.body.checkCollision.left = false;
+
 	this.platformSprite.body.setSize(150, 20, 0, 0);
 
 
