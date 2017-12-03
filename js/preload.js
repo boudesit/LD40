@@ -12,7 +12,11 @@ preload.prototype = {
 		this.game.load.spritesheet('gameover', 'images/Backgrounds/background-score.png', 800, 600,3);
 		this.game.load.spritesheet('gamewin', 'images/Backgrounds/background-score.png',800, 600,2);
 
-		this.game.load.spritesheet('plateform','images/Items/item-plateform-150px.png',150,20,1);
+		this.game.load.spritesheet('plateform50','images/Items/item-plateform-50px.png',50,20,1);
+		this.game.load.spritesheet('plateform100','images/Items/item-plateform-100px.png',100,20,1);
+		this.game.load.spritesheet('plateform150','images/Items/item-plateform-150px.png',150,20,1);
+		this.game.load.spritesheet('plateform400','images/Items/item-plateform-400px.png',400,20,1);
+
 		this.game.load.spritesheet('scale','images/Items/item-echelle-180px.png',40,180,1);
 		this.game.load.spritesheet('bonus-door','images/Items/item-portebonus.png',40,80,3);
 		this.game.load.spritesheet('door','images/Items/item-porte.png',40,80,3);
