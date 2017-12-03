@@ -211,16 +211,16 @@ tutorial1.prototype.createBurger = function createBurger() {
 
 tutorial1.prototype.createVegetables = function createVegetables() {
 
-	this.vegetable1 = new vegetable(this.game, 650, 67);
+	this.vegetable1 = new vegetable(this.game, 650, 467);
 	this.vegetable1.create();
 
-	this.vegetable2 = new vegetable(this.game, 600, 567);
+	this.vegetable2 = new vegetable(this.game, 670, 567);
 	this.vegetable2.create();
 
-	this.vegetable3 = new vegetable(this.game, 634, 567);
+	this.vegetable3 = new vegetable(this.game, 704, 567);
 	this.vegetable3.create();
 
-	this.vegetable4 = new vegetable(this.game, 668, 567);
+	this.vegetable4 = new vegetable(this.game, 738, 567);
 	this.vegetable4.create();
 
 	this.vegetables.add(this.vegetable1.getSprite());
@@ -233,7 +233,7 @@ tutorial1.prototype.createVegetables = function createVegetables() {
 
 tutorial1.prototype.createWalls = function createWalls() {
 
-	this.wall1 = new wall(this.game, 650, 203);
+	this.wall1 = new wall(this.game, 556, 203);
 	this.wall1.create();
 
 	this.walls.add(this.wall1.getSprite());
