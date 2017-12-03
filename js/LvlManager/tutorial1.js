@@ -140,16 +140,16 @@ tutorial1.prototype.createThirdLine = function createThirdLine() {
 
 tutorial1.prototype.createScale = function createScale() {
 
-	this.scale1 = new scale(this.game, 250, 480);
+	this.scale1 = new scale(this.game, 250, 440);
 	this.scale1.create();
 
-	this.scale2 = new scale(this.game, 100, 360);
+	this.scale2 = new scale(this.game, 100, 320);
 	this.scale2.create();
 
-	this.scale3 = new scale(this.game, 600, 360);
+	this.scale3 = new scale(this.game, 600, 320);
 	this.scale3.create();
 
-	this.scale4 = new scale(this.game, 700, 120);
+	this.scale4 = new scale(this.game, 700, 80);
 	this.scale4.create();
 
 	this.scales.add(this.scale1.getSprite());
@@ -236,10 +236,10 @@ tutorial1.prototype.getDoors = function getDoors() {
 	return this.doors;
 };
 
-tutorial1.prototype.getBurgers = function getDoors() {
+tutorial1.prototype.getBurgers = function getBurgers() {
 	return this.burgers;
 };
 
-tutorial1.prototype.getVegetables = function getDoors() {
+tutorial1.prototype.getVegetables = function getVegetables() {
 	return this.vegetables;
 };
