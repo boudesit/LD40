@@ -81,16 +81,16 @@ tutorial1.prototype.create = function create() {
 tutorial1.prototype.createFirstLine = function createFirstLine() {
 
 	// First Line of Plateform
-	this.plateform1 = new platform(this.game, 0, 500);
+	this.plateform1 = new platform(this.game, 0, 500, 150);
 	this.plateform1.create();
 
-	this.plateform2 = new platform(this.game, 150, 500);
+	this.plateform2 = new platform(this.game, 150, 500, 150);
 	this.plateform2.create();
 
-	this.plateform3 = new platform(this.game, 500, 500);
+	this.plateform3 = new platform(this.game, 500, 500, 150);
 	this.plateform3.create();
 
-	this.plateform4 = new platform(this.game, 650, 500);
+	this.plateform4 = new platform(this.game, 650, 500, 150);
 	this.plateform4.create();
 
 	this.plateforms.add(this.plateform1.getSprite());
@@ -104,59 +104,64 @@ tutorial1.prototype.createFirstLine = function createFirstLine() {
 tutorial1.prototype.createSecondLine = function createSecondLine() {
 	// Second Line of Plateform
 
-	this.plateform5 = new platform(this.game, 0, 300);
-	this.plateform6 = new platform(this.game, 150, 300);
-	this.plateform7 = new platform(this.game, 400, 300);
-	this.plateform10 = new platform(this.game, 650, 300);
+	this.plateform5 = new platform(this.game, 0, 300, 100);
+	this.plateform8 = new platform(this.game, 150, 300, 150);
+
+	this.plateform7 = new platform(this.game, 450, 300, 150);
+	this.plateform10 = new platform(this.game, 650, 300, 100);
+	this.plateform6 = new platform(this.game, 750, 300, 50);
+	this.plateform9 = new platform(this.game, 400, 300, 50);
+
 
 	this.plateform5.create();
 	this.plateform6.create();
 	this.plateform7.create();
+	this.plateform8.create();
+	this.plateform9.create();
 	this.plateform10.create();
 
 
   this.plateforms.add(this.plateform5.getSprite());
 	this.plateforms.add(this.plateform6.getSprite());
 	this.plateforms.add(this.plateform7.getSprite());
+	this.plateforms.add(this.plateform8.getSprite());
+	this.plateforms.add(this.plateform9.getSprite());
 	this.plateforms.add(this.plateform10.getSprite());
 };
 
 tutorial1.prototype.createThirdLine = function createThirdLine() {
 
-	this.plateform11 = new platform(this.game, 0, 100);
-	this.plateform12 = new platform(this.game, 150, 100);
-	this.plateform13 = new platform(this.game, 300, 100);
-	this.plateform14 = new platform(this.game, 450, 100);
-	this.plateform15 = new platform(this.game, 600, 100);
+	this.plateform11 = new platform(this.game, 0, 100, 400);
+	this.plateform12 = new platform(this.game, 400, 100, 150);
+	this.plateform13 = new platform(this.game, 550, 100, 150);
+	this.plateform15 = new platform(this.game, 750, 100, 50);
 
 
 	this.plateform11.create();
 	this.plateform12.create();
 	this.plateform13.create();
-	this.plateform14.create();
 	this.plateform15.create();
 
 
 	this.plateforms.add(this.plateform11.getSprite());
 	this.plateforms.add(this.plateform12.getSprite());
 	this.plateforms.add(this.plateform13.getSprite());
-	this.plateforms.add(this.plateform14.getSprite());
 	this.plateforms.add(this.plateform15.getSprite());
 
 };
 
 tutorial1.prototype.createScales = function createScales() {
 
-	this.scale1 = new scale(this.game, 250, 440);
+	this.scale1 = new scale(this.game, 300, 500, 100);
 	this.scale1.create();
 
-	this.scale2 = new scale(this.game, 100, 320);
+	this.scale2 = new scale(this.game, 100, 300, 200);
 	this.scale2.create();
 
-	this.scale3 = new scale(this.game, 600, 320);
+	this.scale3 = new scale(this.game, 600, 300, 200);
 	this.scale3.create();
 
-	this.scale4 = new scale(this.game, 700, 80);
+	this.scale4 = new scale(this.game, 700, 100, 200);
 	this.scale4.create();
 
 	this.scales.add(this.scale1.getSprite());
@@ -167,10 +172,10 @@ tutorial1.prototype.createScales = function createScales() {
 
 tutorial1.prototype.createDoors = function createDoors() {
 
-	this.bonusDoor = new door(this.game, 0, 0, true);
+	this.bonusDoor = new door(this.game, 0, 30, true);
 	this.bonusDoor.create();
 
-	this.door = new door(this.game, 750, 190, false);
+	this.door = new door(this.game, 750, 220, false);
 	this.door.create();
 
 	this.doors.add(this.bonusDoor.getSprite());
@@ -180,19 +185,19 @@ tutorial1.prototype.createDoors = function createDoors() {
 
 tutorial1.prototype.createBurger = function createBurger() {
 
-	this.burger1 = new burger(this.game, 400, 267);
+	this.burger1 = new burger(this.game, 250, 267);
 	this.burger1.create();
 
-	this.burger2 = new burger(this.game, 434, 267);
+	this.burger2 = new burger(this.game, 300, 227);
 	this.burger2.create();
 
-	this.burger3 = new burger(this.game, 468, 267);
+	this.burger3 = new burger(this.game, 334, 207);
 	this.burger3.create();
 
-	this.burger4 = new burger(this.game, 502, 267);
+	this.burger4 = new burger(this.game, 368, 227);
 	this.burger4.create();
 
-	this.burger5 = new burger(this.game, 536, 267);
+	this.burger5 = new burger(this.game, 416, 267);
 	this.burger5.create();
 
 	this.burgers.add(this.burger1.getSprite());
@@ -206,7 +211,7 @@ tutorial1.prototype.createBurger = function createBurger() {
 
 tutorial1.prototype.createVegetables = function createVegetables() {
 
-	this.vegetable1 = new vegetable(this.game, 650, 267);
+	this.vegetable1 = new vegetable(this.game, 650, 67);
 	this.vegetable1.create();
 
 	this.vegetable2 = new vegetable(this.game, 600, 567);
@@ -228,7 +233,7 @@ tutorial1.prototype.createVegetables = function createVegetables() {
 
 tutorial1.prototype.createWalls = function createWalls() {
 
-	this.wall1 = new wall(this.game, 650, 267);
+	this.wall1 = new wall(this.game, 650, 203);
 	this.wall1.create();
 
 	this.walls.add(this.wall1.getSprite());
@@ -236,7 +241,7 @@ tutorial1.prototype.createWalls = function createWalls() {
 
 
 tutorial1.prototype.update = function update() {
-	
+
 	this.wall1.update();
 };
 

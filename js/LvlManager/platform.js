@@ -1,14 +1,15 @@
-function platform(game, posX, posY) {
+function platform(game, posX, posY, length) {
 	this.game = game;
   this.platformSprite = null;
   this.posX = posX;
 	this.posY = posY;
+	this.length = length;
 
 };
 
 platform.prototype.create = function create() {
 
-	this.platformSprite = this.game.add.sprite(this.posX, this.posY, 'plateform');
+	this.platformSprite = this.game.add.sprite(this.posX, this.posY, 'plateform' + this.length);
 	this.game.physics.enable(this.platformSprite);
 	// this.plateform1.scale.setTo(1.5,1.5);
 	this.platformSprite.physicsBodyType = Phaser.Physics.ARCADE;
@@ -20,7 +21,7 @@ platform.prototype.create = function create() {
 	this.platformSprite.body.checkCollision.right = false;
 	this.platformSprite.body.checkCollision.left = false;
 
-	this.platformSprite.body.setSize(150, 20, 0, 0);
+	this.platformSprite.body.setSize(this.length, 20, 0, 0);
 
 
 };

@@ -37,3 +37,7 @@ HeroStraight.prototype.getCanPorteBonus = function getCanPorteBonus() {
 HeroStraight.prototype.getSpeedLadder = function getSpeedLadder() {
 	return this.speedLadder;
 };
+
+HeroStraight.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
+		sprite.animations.play('hero_semi_walk');
+};
