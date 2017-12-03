@@ -39,7 +39,5 @@ HeroStraight.prototype.getSpeedLadder = function getSpeedLadder() {
 };
 
 HeroStraight.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
-	   sprite = this.game.add.sprite(sprite.x,sprite.y, 'hero_semi_idle');
-	   sprite.animations.add('hero_semi_idle');
-		 sprite.animations.play('hero_semi_idle', 5, true);
+		sprite.animations.play('hero_semi_walk');
 };

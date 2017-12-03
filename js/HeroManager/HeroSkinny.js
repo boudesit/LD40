@@ -39,7 +39,5 @@ HeroSkinny.prototype.getSpeedLadder = function getSpeedLadder() {
 };
 
 HeroSkinny.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
-	   sprite = this.game.add.sprite(sprite.x,sprite.y, 'hero_light_idle');
-	   sprite.animations.add('hero_light_idle');
-		 sprite.animations.play('hero_light_idle', 5, true);
+		 sprite.animations.play('hero_light_walk');
 };

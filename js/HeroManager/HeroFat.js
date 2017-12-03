@@ -41,7 +41,5 @@ HeroFat.prototype.getSpeedLadder = function getSpeedLadder() {
 };
 
 HeroFat.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
-	   sprite = this.game.add.sprite(sprite.x,sprite.y, 'hero_fat_idle');
-	   sprite.animations.add('hero_fat_idle');
-		 sprite.animations.play('hero_fat_idle', 5, true);
+		 sprite.animations.play('hero_fat_walk');
 };

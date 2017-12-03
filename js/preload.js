@@ -25,6 +25,9 @@ preload.prototype = {
 		this.game.load.spritesheet('wall','images/Items/item-mur.png',40,97,3);
 
 
+    this.game.load.spritesheet('hero', 'images/Player/player.png',40,100,33);
+
+
 		//le normale
     this.game.load.spritesheet('hero_semi_climb', 'images/Player/semi/player-semi-climb.png',30,80,3);
 		this.game.load.spritesheet('hero_semi_idle', 'images/Player/semi/player-semi-idle.png',30,80,3);
@@ -43,22 +46,24 @@ preload.prototype = {
 		this.game.load.spritesheet('hero_light_walk', 'images/Player/light/player-light-walk.png',30,80,3);
 		this.game.load.spritesheet('hero_light_jump', 'images/Player/light/player-light-jump.png',30,80,2);
 
+
 		//Image
 		this.game.load.image('background', 'images/Backgrounds/background-game.png');
 		this.game.load.image('gamewin', 'assets/img/gamewin.jpg');
 
 		//Sound
-     		game.load.audio('gameSound', 'assets/sound/game.mp3');
-     		game.load.audio('introSound', 'assets/sound/intro.mp3');
-     		game.load.audio('loseSound', 'assets/sound/loose.mp3');
-				game.load.audio('winSound', 'assets/sound/winSound.mp3');
-  	   	game.load.audio('explosionSound', 'assets/sound/explodeSound.mp3');
-				game.load.audio('deathSound', 'assets/sound/unitedeath.mp3');
+    game.load.audio('gameSound', 'assets/sound/game.mp3');
+    game.load.audio('introSound', 'assets/sound/intro.mp3');
+    game.load.audio('loseSound', 'assets/sound/loose.mp3');
+		game.load.audio('winSound', 'assets/sound/winSound.mp3');
+  	game.load.audio('explosionSound', 'assets/sound/explodeSound.mp3');
+		game.load.audio('deathSound', 'assets/sound/unitedeath.mp3');
 
 	},
   	create: function(){
   		this.game.time.events.add(Phaser.Timer.SECOND * 2, this._startGame, this);
 	},
+
 	_startGame: function(){
 		this.game.state.start("GameTitle");
 	}
