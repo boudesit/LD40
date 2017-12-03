@@ -6,7 +6,7 @@ var HeroSkinny = function(game) {
 
 HeroSkinny.prototype = {
     create: function() {
-      this.speed = 200;
+      this.speed = 500;
     },
 
     update: function() {

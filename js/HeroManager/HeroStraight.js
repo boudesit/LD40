@@ -6,7 +6,7 @@ var HeroStraight = function(game) {
 
 HeroStraight.prototype = {
     create: function() {
-      this.speed = 500;
+      this.speed = 200;
     },
 
     update: function() {
