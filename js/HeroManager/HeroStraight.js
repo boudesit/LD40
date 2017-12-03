@@ -1,12 +1,15 @@
 var HeroStraight = function(game) {
 
 	this.game = game;
-  this.speed = 0;
+	this.speed = 200;
+	this.jump = 300;
+	this.jumpDuration = 1400;
+	this.portebonus = true;
 }
 
 HeroStraight.prototype = {
     create: function() {
-      this.speed = 200;
+
     },
 
     update: function() {
@@ -16,4 +19,16 @@ HeroStraight.prototype = {
 
 HeroStraight.prototype.getSpeed = function getSpeed() {
 	return this.speed;
+};
+
+HeroStraight.prototype.getJump = function getJump() {
+	return this.jump;
+};
+
+HeroStraight.prototype.getJumpDuration = function getJumpDuration() {
+	return this.jumpDuration;
+};
+
+HeroStraight.prototype.getCanPorteBonus = function getCanPorteBonus() {
+	return this.portebonus;
 };
