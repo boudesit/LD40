@@ -48,7 +48,7 @@ HUD.prototype.create = function create() {
 HUD.prototype.update = function update() {
 
   this.hero.update();
-
+	this.lvlManager.update();
 	// this.computer.update();
   //
 	// this.player.getPlayerUnitRockGroupRessource().forEach(this.moveUnitRockTowardRessources, this);

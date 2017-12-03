@@ -27,7 +27,7 @@ lvlManager.prototype.create = function create() {
 
 
 lvlManager.prototype.update = function update() {
-
+	this.lvl.update();
 };
 
 
