@@ -8,7 +8,7 @@ HeroFat.prototype = {
 
     create: function() {
 
-      this.speed = 50;
+      this.speed = 100;
 
     },
 
