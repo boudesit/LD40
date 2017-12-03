@@ -22,7 +22,7 @@ HUD.prototype.create = function create() {
 	 this.lvlManager = new lvlManager(this.game, 0);
  	 this.lvlManager.create();
 
-	 this.hero = new HeroManager(this.game);
+	 this.hero = new HeroManager(this.game,this.lvlManager);
    this.hero.create();
 
 	 this.explosionSound = game.add.audio('explosionSound');
@@ -57,7 +57,7 @@ HUD.prototype.update = function update() {
   //
   //
 	// //  Run collision
-	// game.physics.arcade.collide(  this.player.getPlayerUnitGroup() , this.player.getPlayerUnitGroup()  , null, null, this);
+	game.physics.arcade.collide(  this.hero._getSprite() , this.lvlManager._getlvl().getPlateforms() , null, null, this);
 	// game.physics.arcade.collide(  this.computer.getComputerUnitGroup() , this.computer.getComputerUnitGroup()  , null, null, this);
   //
 	// // collision Castle

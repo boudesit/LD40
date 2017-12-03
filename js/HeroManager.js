@@ -1,31 +1,24 @@
-var HeroManager = function(game) {
+var HeroManager = function(game,level) {
 
 	this.game = game;
+	this.level = level;
 	this.sprite = null;
 
 	this.posX = 10;
 	this.posY = 260;
 
-	this.isDead = false;
-	this.life = 3;
+	this.weight = 3;
 
-  this.fireButton = null;
   this.jumpTimer = 0;
-  this.power1 = null;
-	this.power2 = null;
-	this.switch_power = false;
 	this.isSpacePress = false;
-
-	this.live = null;
-	this.renardhitSound = null;
-	this.oeufSound  = null;
 }
 
 HeroManager.prototype = {
     create: function() {
+
 		//sound
 
-
+		//gravity
     this.game.physics.arcade.gravity.y = 500;
 
 		//Sprite
@@ -40,15 +33,16 @@ HeroManager.prototype = {
 		this.sprite.anchor.set(0.5);
 		this.sprite.scale.setTo(1,1);
 	  this.sprite.body.bounce.y = 0.2;
+
 /*
-    //  Arme 1
+    //  Power 1
     this.power1 = this.game.add.power1(5, 'bullet');
     this.power1.bulletKillType = Phaser.power1.KILL_WORLD_BOUNDS;
     this.power1.bulletSpeed = 500;
 		this.power1.fireRate = 900;
     this.power1.trackSprite(this.sprite, 4, 4);
 
-		//Arme 2
+		//Power 2
 		this.power2 = this.game.add.power1(50, 'bullet2');
 		//this.power2.bulletKillType = Phaser.power1.KILL_WORLD_BOUNDS;
 		this.power2.bulletKillType = Phaser.power1.KILL_DISTANCE;
@@ -57,17 +51,16 @@ HeroManager.prototype = {
 		this.power2.fireRate = 200;
 		this.power2.bulletAngleVariance = 10;
 		this.power2.trackSprite(this.sprite, 4, 4);
+
+		//Power 3
 */
 		var key1 = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     key1.onDown.add(this._addPhaserDude, this);
-
-		this.live = 3;
     },
 
     update: function() {
 
-			//Deplacement
-
+			  //Deplacement droite gauche
  				this.sprite.body.velocity.x = 0;
 
 				if(game.input.keyboard.isDown(Phaser.Keyboard.A)) {
@@ -80,11 +73,17 @@ HeroManager.prototype = {
 						this.sprite.body.velocity.x = 200;
 				}
 
+				//saut
         if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.time.now > this.jumpTimer)
         {
             this.sprite.body.velocity.y = -300;
             this.jumpTimer = game.time.now + 1500;
         }
+
+				//monter à l'echelle
+
+
+				// pouvoire 1 - 2 -3
 /*
         if ( game.input.activePointer.leftButton.isDown )
         {
