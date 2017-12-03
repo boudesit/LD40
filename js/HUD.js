@@ -57,7 +57,7 @@ HUD.prototype.update = function update() {
   //
   //
 	// //  Run collision
-	game.physics.arcade.collide(  this.hero._getSprite() , this.lvlManager._getlvl().getPlateforms() , null, null, this);
+	//game.physics.arcade.collide(  this.hero._getSprite() , this.lvlManager._getlvl().getPlateforms() , null, null, this);
 	// game.physics.arcade.collide(  this.computer.getComputerUnitGroup() , this.computer.getComputerUnitGroup()  , null, null, this);
   //
 	// // collision Castle

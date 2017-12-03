@@ -58,7 +58,7 @@ tutorial1.prototype.create = function create() {
 		this.createDoors();
 		this.createBurger();
 		this.createVegetables();
-		
+
 	  this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 	  this.exit.onDown.add(this.lvlEnding, this);
 	};
@@ -156,7 +156,8 @@ tutorial1.prototype.createScales = function createScales() {
 
 	this.scales.add(this.scale1.getSprite());
 	this.scales.add(this.scale2.getSprite());
-
+	this.scales.add(this.scale3.getSprite());
+	this.scales.add(this.scale4.getSprite());
 };
 
 tutorial1.prototype.createDoors = function createDoors() {
@@ -242,6 +243,10 @@ tutorial1.prototype.getBurgers = function getBurgers() {
 
 tutorial1.prototype.getVegetables = function getVegetables() {
 	return this.vegetables;
+};
+
+tutorial1.prototype.getScales = function getScales() {
+	return this.scales;
 };
 
 tutorial1.prototype.getPlateforms = function getPlateforms() {

@@ -11,6 +11,10 @@ var HeroManager = function(game,level) {
 
   this.jumpTimer = 0;
 	this.isSpacePress = false;
+
+	this.heroFat = null;
+	this.heroStraight = null;
+	this.heroSkinny = null;
 }
 
 HeroManager.prototype = {
@@ -34,28 +38,19 @@ HeroManager.prototype = {
 		this.sprite.scale.setTo(1,1);
 	  this.sprite.body.bounce.y = 0.2;
 
-/*
-    //  Power 1
-    this.power1 = this.game.add.power1(5, 'bullet');
-    this.power1.bulletKillType = Phaser.power1.KILL_WORLD_BOUNDS;
-    this.power1.bulletSpeed = 500;
-		this.power1.fireRate = 900;
-    this.power1.trackSprite(this.sprite, 4, 4);
+		// poids
+		this.heroFat = new HeroFat(this.game);
+		this.heroFat.create();
 
-		//Power 2
-		this.power2 = this.game.add.power1(50, 'bullet2');
-		//this.power2.bulletKillType = Phaser.power1.KILL_WORLD_BOUNDS;
-		this.power2.bulletKillType = Phaser.power1.KILL_DISTANCE;
-		this.power2.bulletKillDistance = 200;
-		this.power2.bulletSpeed = 900;
-		this.power2.fireRate = 200;
-		this.power2.bulletAngleVariance = 10;
-		this.power2.trackSprite(this.sprite, 4, 4);
+		this.heroStraight = new HeroStraight(this.game);
+		this.heroStraight.create();
 
-		//Power 3
-*/
+		this.heroSkinny = new HeroSkinny(this.game);
+		this.heroSkinny.create();
+
 		var key1 = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    key1.onDown.add(this._addPhaserDude, this);
+    //key1.onDown.add(this._addPhaserDude, this);
+
     },
 
     update: function() {
@@ -65,12 +60,12 @@ HeroManager.prototype = {
 
 				if(game.input.keyboard.isDown(Phaser.Keyboard.A)) {
 					  this.sprite.scale.x = -1;
-						this.sprite.body.velocity.x = -200;
+						this.sprite.body.velocity.x = - this._getHeroProperties().getSpeed();
 				}
 
 				if(game.input.keyboard.isDown(Phaser.Keyboard.D)) {
 					  this.sprite.scale.x = 1;
-						this.sprite.body.velocity.x = 200;
+						this.sprite.body.velocity.x = this._getHeroProperties().getSpeed();
 				}
 
 				//saut
@@ -80,36 +75,45 @@ HeroManager.prototype = {
             this.jumpTimer = game.time.now + 1500;
         }
 
+				//utiliser pouvoire
+
+				//entrer porte et portebonus
+				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getDoors() , this._onDoors, null, this);
+
+				// pouvoire 1 - 2 -3
+
+
+				//collision
+				game.physics.arcade.collide(  this._getSprite() , this.level._getlvl().getPlateforms() , null, null, this);
+
 				//monter à l'echelle
+				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getScales() , this._climbLadder, null, this);
 
 				//recup des burger
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getBurgers() , this._eatBurger, null, this);
 
 				//recup des legumes
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getVegetables() , this._eatVegetable, null, this);
-
-				// pouvoire 1 - 2 -3
-/*
-        if ( game.input.activePointer.leftButton.isDown )
-        {
-					if(this.switch_power1 == false)
-					{
-						this.power1.fireAngle = (( game.physics.arcade.angleToPointer(this.sprite) * 180) / Math.PI);
-						this.power1.fire();
-					}
-					if(this.switch_power1 == true)
-					{
-						if (this.oeufSound.isPlaying == false)
-						{
-							 this.oeufSound.play();
-						}
-
-						this.power2.fireAngle = (( game.physics.arcade.angleToPointer(this.sprite) * 180) / Math.PI);
-						this.power2.fire();
-					}
-        }
-        */
     },
+
+			_onDoors : function(hero,doors) {
+
+				//add text au dessus de la porte
+				if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
+				{
+					//chargé le niveau suivant
+					//this.level.getNextLvl();
+				}
+
+			},
+
+			_climbLadder : function(hero,scale) {
+				this.sprite.body.velocity.y = -8.5;
+				if (game.input.keyboard.isDown(Phaser.Keyboard.W))
+        {
+            this.sprite.body.velocity.y = -70;
+        }
+			},
 
 		 _eatBurger : function(hero,burger) {
 			 this.weight = this.weight + 1;
@@ -121,37 +125,24 @@ HeroManager.prototype = {
 			 vegetable.kill();
 		 },
 
-		 _addPhaserDude : function() {
-			 //change power
-			 if(this.switch_power1 == false)
-			 {
-				 this.switch_power1 = true;
-			 }
-			 else if(this.switch_power1 == true)
-			 {
-				 this.switch_power1 = false;
-			 }
-			 console.log( this.switch_power1);
-		},
-
     _getSprite : function() {
     		return this.sprite;
     },
 
-    _setIsDead : function(isDead) {
-    	this.isDead = isDead;
+		_getHeroProperties : function() {
+			debugger
+				if(this.weight > 6)
+				{
+					return this.heroFat;
+				}
+				else if (this.weight < 3)
+				{
+					return this.heroSkinny;
+				}
+				else
+				{
+					return this.heroStraight;
+				}
     },
-
-    _getIsDead : function() {
-    	return this.isDead;
-    },
-
-		_getpower1s1 : function() {
-				return this.power1.bullets;
-		},
-
-		_getpower1s2 : function() {
-				return this.power2.bullets;
-		},
 
 }
