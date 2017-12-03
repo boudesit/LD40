@@ -15,6 +15,7 @@ var HeroManager = function(game,level) {
 	this.heroFat = null;
 	this.heroStraight = null;
 	this.heroSkinny = null;
+	this.facing = null;
 }
 
 HeroManager.prototype = {
@@ -25,19 +26,6 @@ HeroManager.prototype = {
 		//gravity
     this.game.physics.arcade.gravity.y = 500;
 
-		//Sprite
-		this.sprite = this.game.add.sprite(this.posX,this.posY, 'hero_idle');
-	  this.sprite.animations.add('idle');
-    this.sprite.animations.play('idle', 5, true);
-
-		this.game.physics.arcade.enable(this.sprite);
-		this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
-		this.sprite.enableBody = true;
-	  this.sprite.body.collideWorldBounds=true;
-		this.sprite.anchor.set(0.5);
-		this.sprite.scale.setTo(1,1);
-	  this.sprite.body.bounce.y = 0.2;
-
 		// poids
 		this.heroFat = new HeroFat(this.game);
 		this.heroFat.create();
@@ -47,6 +35,36 @@ HeroManager.prototype = {
 
 		this.heroSkinny = new HeroSkinny(this.game);
 		this.heroSkinny.create();
+
+		//Sprite
+		this.sprite = this.game.add.sprite(this.posX,this.posY, 'hero');
+
+		this.sprite.animations.add('hero_light_climb', [0, 1, 2], 10, true);
+		this.sprite.animations.add('hero_light_idle', [3, 4, 5], 10, true);
+		this.sprite.animations.add('hero_light_jump', [6, 7], 10, true);
+		this.sprite.animations.add('hero_light_walk', [8, 9, 10], 10, true);
+
+		this.sprite.animations.add('hero_fat_break', [11, 12], 10, true);
+		this.sprite.animations.add('hero_fat_climb', [13, 14, 15], 10, true);
+		this.sprite.animations.add('hero_fat_idle', [16, 17,18], 10, true);
+		this.sprite.animations.add('hero_fat_walk', [19, 20, 21], 10, true);
+
+		this.sprite.animations.add('hero_semi_climb', [22, 23, 24], 10, true);
+		this.sprite.animations.add('hero_semi_idle', [25, 26, 27], 10, true);
+		this.sprite.animations.add('hero_semi_jump', [28, 29], 10, true);
+		this.sprite.animations.add('hero_semi_walk', [30, 31, 32], 10, true);
+
+
+ 		this.sprite.animations.play('hero_semi_idle');
+
+
+		this.game.physics.arcade.enable(this.sprite);
+		this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
+		this.sprite.enableBody = true;
+		this.sprite.body.collideWorldBounds=true;
+		this.sprite.anchor.set(0.5);
+		this.sprite.scale.setTo(1,1);
+		this.sprite.body.bounce.y = 0.2;
 
 		var key1 = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     //key1.onDown.add(this._addPhaserDude, this);
@@ -132,11 +150,13 @@ HeroManager.prototype = {
 		 _eatBurger : function(hero,burger) {
 			 this.weight = this.weight + 1;
 			 burger.kill();
+			 this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
 		 _eatVegetable : function(hero,vegetable) {
 			 this.weight = this.weight - 1;
 			 vegetable.kill();
+			 	this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
     _getSprite : function() {

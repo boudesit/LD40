@@ -39,3 +39,7 @@ HeroFat.prototype.getCanPorteBonus = function getCanPorteBonus() {
 HeroFat.prototype.getSpeedLadder = function getSpeedLadder() {
 	return this.speedLadder;
 };
+
+HeroFat.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
+		 sprite.animations.play('hero_fat_walk');
+};

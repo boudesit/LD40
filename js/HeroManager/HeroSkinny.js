@@ -37,3 +37,7 @@ HeroSkinny.prototype.getCanPorteBonus = function getCanPorteBonus() {
 HeroSkinny.prototype.getSpeedLadder = function getSpeedLadder() {
 	return this.speedLadder;
 };
+
+HeroSkinny.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
+		 sprite.animations.play('hero_light_walk');
+};
