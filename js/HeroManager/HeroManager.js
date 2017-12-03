@@ -10,6 +10,7 @@ var HeroManager = function(game,level) {
 	this.weight = 3;
 
   this.jumpTimer = 0;
+	this.idleTimer = 0;
 	this.isSpacePress = false;
 
 	this.heroFat = null;
@@ -54,10 +55,6 @@ HeroManager.prototype = {
 		this.sprite.animations.add('hero_semi_jump', [28, 29], 10, true);
 		this.sprite.animations.add('hero_semi_walk', [30, 31, 32], 10, true);
 
-
- 		this.sprite.animations.play('hero_semi_idle');
-
-
 		this.game.physics.arcade.enable(this.sprite);
 		this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
 		this.sprite.enableBody = true;
@@ -66,6 +63,9 @@ HeroManager.prototype = {
 		this.sprite.scale.setTo(1,1);
 		this.sprite.body.bounce.y = 0.2;
 
+		this._getHeroProperties().getAnimationIdle(this._getSprite());
+
+
 		var key1 = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     //key1.onDown.add(this._addPhaserDude, this);
 
@@ -73,27 +73,33 @@ HeroManager.prototype = {
 
     update: function() {
 
-			  //Deplacement droite gauche
- 				this.sprite.body.velocity.x = 0;
 
+ 				this.sprite.body.velocity.x = 0;
+				//timer pour le idle
+        if ( game.time.now > this.idleTimer)
+        {
+						this._getHeroProperties().getAnimationIdle(this._getSprite());
+            this.idleTimer = game.time.now + 500;
+        }
+
+			  //Deplacement droite gauche
 				if(game.input.keyboard.isDown(Phaser.Keyboard.A)) {
+						this._getHeroProperties().getAnimationWalk(this._getSprite());
 					  this.sprite.scale.x = -1;
 						this.sprite.body.velocity.x = - this._getHeroProperties().getSpeed();
+
 				}
 
 				if(game.input.keyboard.isDown(Phaser.Keyboard.D)) {
+						this._getHeroProperties().getAnimationWalk(this._getSprite());
 					  this.sprite.scale.x = 1;
 						this.sprite.body.velocity.x = this._getHeroProperties().getSpeed();
 				}
 
-
-
-				//utiliser pouvoire
-
-
 				//entrer porte et portebonus
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getDoors() , this._onDoors, null, this);
 
+				//utiliser pouvoire
 				// pouvoire 1 - 2 -3
 
 
@@ -128,6 +134,7 @@ HeroManager.prototype = {
 				//saut
         if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.time.now > this.jumpTimer)
         {
+						this._getHeroProperties().getAnimationJump(this._getSprite());
             this.sprite.body.velocity.y = - this._getHeroProperties().getJump();
 						//ajouter un jump timer selon la corpulance
             this.jumpTimer = game.time.now + this._getHeroProperties().getJumpDuration();
@@ -139,10 +146,12 @@ HeroManager.prototype = {
 				this.sprite.body.velocity.y = -8.5;
 				if (game.input.keyboard.isDown(Phaser.Keyboard.W))
         {
+						this._getHeroProperties().getAnimationClimb(this._getSprite());
             this.sprite.body.velocity.y = - this._getHeroProperties().getSpeedLadder();
         }
 				if (game.input.keyboard.isDown(Phaser.Keyboard.S))
 				{
+						this._getHeroProperties().getAnimationClimb(this._getSprite());
 						this.sprite.body.velocity.y = this._getHeroProperties().getSpeedLadder();
 				}
 			},
