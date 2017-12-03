@@ -71,8 +71,9 @@ HeroManager.prototype = {
 				//saut
         if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.time.now > this.jumpTimer)
         {
-            this.sprite.body.velocity.y = -600;
-            this.jumpTimer = game.time.now + 1500;
+            this.sprite.body.velocity.y = - this._getHeroProperties().getJump();
+						//ajouter un jump timer selon la corpulance
+            this.jumpTimer = game.time.now + this._getHeroProperties().getJumpDuration();
         }
 
 				//utiliser pouvoire
@@ -130,9 +131,9 @@ HeroManager.prototype = {
     },
 
 		_getHeroProperties : function() {
-			debugger
 				if(this.weight > 6)
 				{
+					//play sprite fat
 					return this.heroFat;
 				}
 				else if (this.weight < 3)

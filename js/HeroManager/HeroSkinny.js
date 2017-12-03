@@ -1,12 +1,13 @@
 var HeroSkinny = function(game) {
 
 	this.game = game;
-  this.speed = 0;
+	this.jump = 400;
+	this.portebonus = true;
 }
 
 HeroSkinny.prototype = {
     create: function() {
-      this.speed = 500;
+
     },
 
     update: function() {
@@ -16,4 +17,16 @@ HeroSkinny.prototype = {
 
 HeroSkinny.prototype.getSpeed = function getSpeed() {
 	return this.speed;
+};
+
+HeroSkinny.prototype.getJump = function getJump() {
+	return this.jump;
+};
+
+HeroSkinny.prototype.getJumpDuration = function getJumpDuration() {
+	return this.jumpDuration;
+};
+
+HeroSkinny.prototype.getCanPorteBonus = function getCanPorteBonus() {
+	return this.portebonus;
 };
