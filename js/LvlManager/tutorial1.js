@@ -57,7 +57,8 @@ tutorial1.prototype.create = function create() {
 		this.createScales();
 		this.createDoors();
 		this.createBurger();
-
+		this.createVegetables();
+		
 	  this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 	  this.exit.onDown.add(this.lvlEnding, this);
 	};
@@ -197,7 +198,7 @@ tutorial1.prototype.createBurger = function createBurger() {
 
 };
 
-tutorial1.prototype.createVegetable = function createVegetable() {
+tutorial1.prototype.createVegetables = function createVegetables() {
 
 	this.vegetable1 = new vegetable(this.game, 650, 267);
 	this.vegetable1.create();
