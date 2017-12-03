@@ -41,5 +41,21 @@ HeroFat.prototype.getSpeedLadder = function getSpeedLadder() {
 };
 
 HeroFat.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
-		 sprite.animations.play('hero_fat_walk');
+		sprite.animations.play('hero_fat_idle');
+};
+
+HeroFat.prototype.getAnimationWalk = function getAnimationWalk(sprite) {
+		sprite.animations.play('hero_fat_walk');
+};
+
+HeroFat.prototype.getAnimationJump = function getAnimationJump(sprite) {
+		sprite.animations.play('hero_fat_idle');
+};
+
+HeroFat.prototype.getAnimationPower = function getAnimationJump(sprite) {
+		sprite.animations.play('hero_fat_break');
+};
+
+HeroFat.prototype.getAnimationClimb = function getAnimationClimb(sprite) {
+		sprite.animations.play('hero_fat_climb');
 };

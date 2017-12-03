@@ -39,5 +39,18 @@ HeroStraight.prototype.getSpeedLadder = function getSpeedLadder() {
 };
 
 HeroStraight.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
+		if(sprite.animations)
+		sprite.animations.play('hero_semi_idle');
+};
+
+HeroStraight.prototype.getAnimationWalk = function getAnimationWalk(sprite) {
 		sprite.animations.play('hero_semi_walk');
+};
+
+HeroStraight.prototype.getAnimationJump = function getAnimationJump(sprite) {
+		sprite.animations.play('hero_semi_jump');
+};
+
+HeroStraight.prototype.getAnimationClimb = function getAnimationClimb(sprite) {
+		sprite.animations.play('hero_semi_climb');
 };
