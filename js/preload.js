@@ -22,22 +22,22 @@ preload.prototype = {
 
 
 		//le normale
-    this.game.load.spritesheet('hero_climb', 'images/Player/semi/player-semi-climb.png',30,80,3);
-		this.game.load.spritesheet('hero_idle', 'images/Player/semi/player-semi-idle.png',30,80,3);
-		this.game.load.spritesheet('hero_walk', 'images/Player/semi/player-semi-walk.png',30,80,3);
-		this.game.load.spritesheet('hero_jump', 'images/Player/semi/player-semi-jump.png',30,80,2);
+    this.game.load.spritesheet('hero_semi_climb', 'images/Player/semi/player-semi-climb.png',30,80,3);
+		this.game.load.spritesheet('hero_semi_idle', 'images/Player/semi/player-semi-idle.png',30,80,3);
+		this.game.load.spritesheet('hero_semi_walk', 'images/Player/semi/player-semi-walk.png',30,80,3);
+		this.game.load.spritesheet('hero_semi_jump', 'images/Player/semi/player-semi-jump.png',30,80,2);
 
 		//le gros cul
-		this.game.load.spritesheet('hero_break', 'images/Player/fat/player-fat-break.png',30,80,2);
-		this.game.load.spritesheet('hero_idle', 'images/Player/fat/player-fat-idle.png',40,100,3);
-		this.game.load.spritesheet('hero_walk', 'images/Player/fat/player-fat-walk.png',40,100,3);
-		this.game.load.spritesheet('hero_climb', 'images/Player/fat/player-fat-climb.png',30,80,3);
+		this.game.load.spritesheet('hero_fat_break', 'images/Player/fat/player-fat-break.png',30,80,2);
+		this.game.load.spritesheet('hero_fat_idle', 'images/Player/fat/player-fat-idle.png',40,100,3);
+		this.game.load.spritesheet('hero_fat_walk', 'images/Player/fat/player-fat-walk.png',40,100,3);
+		this.game.load.spritesheet('hero_fat_climb', 'images/Player/fat/player-fat-climb.png',30,80,3);
 
 		// le vieul maigre
-		this.game.load.spritesheet('hero_climb', 'images/Player/light/player-light-climb.png',30,80,3);
-		this.game.load.spritesheet('hero_idle', 'images/Player/light/player-light-idle.png',30,80,3);
-		this.game.load.spritesheet('hero_walk', 'images/Player/light/player-light-walk.png',30,80,3);
-		this.game.load.spritesheet('hero_jump', 'images/Player/light/player-light-jump.png',30,80,2);
+		this.game.load.spritesheet('hero_light_climb', 'images/Player/light/player-light-climb.png',30,80,3);
+		this.game.load.spritesheet('hero_light_idle', 'images/Player/light/player-light-idle.png',30,80,3);
+		this.game.load.spritesheet('hero_light_walk', 'images/Player/light/player-light-walk.png',30,80,3);
+		this.game.load.spritesheet('hero_light_jump', 'images/Player/light/player-light-jump.png',30,80,2);
 
 		//Image
 		this.game.load.image('background', 'images/Backgrounds/background-game.png');

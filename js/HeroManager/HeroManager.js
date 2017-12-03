@@ -25,19 +25,6 @@ HeroManager.prototype = {
 		//gravity
     this.game.physics.arcade.gravity.y = 500;
 
-		//Sprite
-		this.sprite = this.game.add.sprite(this.posX,this.posY, 'hero_idle');
-	  this.sprite.animations.add('idle');
-    this.sprite.animations.play('idle', 5, true);
-
-		this.game.physics.arcade.enable(this.sprite);
-		this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
-		this.sprite.enableBody = true;
-	  this.sprite.body.collideWorldBounds=true;
-		this.sprite.anchor.set(0.5);
-		this.sprite.scale.setTo(1,1);
-	  this.sprite.body.bounce.y = 0.2;
-
 		// poids
 		this.heroFat = new HeroFat(this.game);
 		this.heroFat.create();
@@ -47,6 +34,16 @@ HeroManager.prototype = {
 
 		this.heroSkinny = new HeroSkinny(this.game);
 		this.heroSkinny.create();
+
+		//Sprite
+		this._getHeroProperties().getAnimationIdle(this._getSprite());
+		this.game.physics.arcade.enable(this.sprite);
+		this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
+		this.sprite.enableBody = true;
+		this.sprite.body.collideWorldBounds=true;
+		this.sprite.anchor.set(0.5);
+		this.sprite.scale.setTo(1,1);
+		this.sprite.body.bounce.y = 0.2;
 
 		var key1 = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     //key1.onDown.add(this._addPhaserDude, this);
@@ -132,11 +129,17 @@ HeroManager.prototype = {
 		 _eatBurger : function(hero,burger) {
 			 this.weight = this.weight + 1;
 			 burger.kill();
+
+			 //Sprite
+			 this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
 		 _eatVegetable : function(hero,vegetable) {
 			 this.weight = this.weight - 1;
 			 vegetable.kill();
+
+			 		//Sprite
+			 		this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
     _getSprite : function() {

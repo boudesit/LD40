@@ -39,3 +39,9 @@ HeroFat.prototype.getCanPorteBonus = function getCanPorteBonus() {
 HeroFat.prototype.getSpeedLadder = function getSpeedLadder() {
 	return this.speedLadder;
 };
+
+HeroFat.prototype.getAnimationIdle = function getAnimationIdle(sprite) {
+	   sprite = this.game.add.sprite(sprite.x,sprite.y, 'hero_fat_idle');
+	   sprite.animations.add('hero_fat_idle');
+		 sprite.animations.play('hero_fat_idle', 5, true);
+};
