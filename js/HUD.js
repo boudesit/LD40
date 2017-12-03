@@ -10,6 +10,7 @@ function HUD(game) {
 	this.fight = null;
 	this.fightCastle = null;
 	this.computeRessourcesTkt = null;
+	this.hero = null;
 	this.timeDelay = 0;
 };
 
@@ -20,6 +21,9 @@ HUD.prototype.create = function create() {
 
 	 this.lvlManager = new lvlManager(this.game, 0);
  	 this.lvlManager.create();
+
+	 this.hero = new HeroManager(this.game);
+   this.hero.create();
 
 	 this.explosionSound = game.add.audio('explosionSound');
  	 this.explosion  = game.add.sprite(-100,-100, 'explosion');
@@ -43,12 +47,8 @@ HUD.prototype.create = function create() {
 
 HUD.prototype.update = function update() {
 
+  this.hero.update();
 
-
-
-
-
-  // this.player.update();
 	// this.computer.update();
   //
 	// this.player.getPlayerUnitRockGroupRessource().forEach(this.moveUnitRockTowardRessources, this);
