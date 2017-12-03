@@ -19,7 +19,7 @@ preload.prototype = {
 		this.game.load.spritesheet('burger','images/Items/item-burger.png',34,33,3);
 		this.game.load.spritesheet('vegetable','images/Items/item-legume.png',34,33,3);
 
-    this.game.load.spritesheet('hero_idle', 'images/Player/player-light-idle.png',30,80,3);
+    this.game.load.spritesheet('hero_idle', 'images/Player/player-light-idle-30-80px.png',30,80,3);
 		// this.game.load.spritesheet('ressource_1', 'assets/img/ressource_1.png', 50, 50,2);//water
 		// this.game.load.spritesheet('ressource_2', 'assets/img/ressource_2.png', 50, 50,2); //food
 		// this.game.load.spritesheet('ressource_3', 'assets/img/ressource_3.png', 50, 50,2);//Rock
