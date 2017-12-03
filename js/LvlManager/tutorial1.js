@@ -35,6 +35,7 @@ function tutorial1(game) {
 	this.vegetable3 = null;
 	this.vegetable4 = null;
 
+	this.wall1 = null;
 
 	this.bonusDoor = null;
 	this.door = null;
@@ -49,6 +50,9 @@ function tutorial1(game) {
 
 	this.burgers = this.game.add.group();
 	this.vegetables = this.game.add.group();
+
+	this.walls = this.game.add.group();
+
 };
 
 tutorial1.prototype.create = function create() {
@@ -58,6 +62,7 @@ tutorial1.prototype.create = function create() {
 		this.createDoors();
 		this.createBurger();
 		this.createVegetables();
+		this.createWalls();
 
 	  this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 	  this.exit.onDown.add(this.lvlEnding, this);
@@ -221,16 +226,23 @@ tutorial1.prototype.createVegetables = function createVegetables() {
 
 };
 
+tutorial1.prototype.createWalls = function createWalls() {
+
+	this.wall1 = new wall(this.game, 650, 267);
+	this.wall1.create();
+
+	this.walls.add(this.wall1.getSprite());
+};
+
 
 tutorial1.prototype.update = function update() {
-
-
+	
+	this.wall1.update();
 };
 
 tutorial1.prototype.lvlEnding = function lvlEnding(){
 
-    this.lvlManager = new lvlManager(this.game, 1);
-    this.lvlManager.create();
+    this.wall1.getSprite().damage += 1;
 };
 
 tutorial1.prototype.getDoors = function getDoors() {
@@ -251,4 +263,8 @@ tutorial1.prototype.getScales = function getScales() {
 
 tutorial1.prototype.getPlateforms = function getPlateforms() {
 	return this.plateforms;
+};
+
+tutorial1.prototype.getWalls = function getWalls() {
+	return this.walls;
 };
