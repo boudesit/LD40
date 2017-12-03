@@ -65,8 +65,6 @@ tutorial1.prototype.create = function create() {
 	this.createBurger();
 	this.createVegetable();
 
-	this.getDoors();
-
   this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
   this.exit.onDown.add(this.lvlEnding, this);
 
