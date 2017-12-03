@@ -1,14 +1,15 @@
-function scale(game, posX, posY) {
+function scale(game, posX, posY, length) {
 	this.game = game;
   this.scaleSprite = null;
   this.posX = posX;
 	this.posY = posY;
+	this.length = length;
 
 };
 
 scale.prototype.create = function create() {
 
-	this.scaleSprite = this.game.add.sprite(this.posX, this.posY, "scale");
+	this.scaleSprite = this.game.add.sprite(this.posX, this.posY, "scale" + this.length);
 
 	this.scaleSprite.enableBody = true;
 	this.game.physics.arcade.enable(this.scaleSprite);
