@@ -2,6 +2,7 @@ var HeroSkinny = function(game) {
 
 	this.game = game;
   this.speed = 400;
+	this.speedLadder = 150;
 	this.jump = 400;
 	this.jumpDuration = 1700;
 	this.portebonus = true;
@@ -31,4 +32,8 @@ HeroSkinny.prototype.getJumpDuration = function getJumpDuration() {
 
 HeroSkinny.prototype.getCanPorteBonus = function getCanPorteBonus() {
 	return this.portebonus;
+};
+
+HeroSkinny.prototype.getSpeedLadder = function getSpeedLadder() {
+	return this.speedLadder;
 };
