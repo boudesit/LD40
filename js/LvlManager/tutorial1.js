@@ -106,11 +106,10 @@ tutorial1.prototype.createSecondLine = function createSecondLine() {
 
 	this.plateform5 = new platform(this.game, 0, 300, 100);
 	this.plateform8 = new platform(this.game, 150, 300, 150);
-
+	this.plateform9 = new platform(this.game, 300, 300, 150);
 	this.plateform7 = new platform(this.game, 450, 300, 150);
 	this.plateform10 = new platform(this.game, 650, 300, 100);
 	this.plateform6 = new platform(this.game, 750, 300, 50);
-	this.plateform9 = new platform(this.game, 400, 300, 50);
 
 
 	this.plateform5.create();
@@ -175,7 +174,7 @@ tutorial1.prototype.createDoors = function createDoors() {
 	this.bonusDoor = new door(this.game, 0, 30, true);
 	this.bonusDoor.create();
 
-	this.door = new door(this.game, 750, 220, false);
+	this.door = new door(this.game, 750, 420, false);
 	this.door.create();
 
 	this.doors.add(this.bonusDoor.getSprite());
