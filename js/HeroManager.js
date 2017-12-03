@@ -5,7 +5,7 @@ var HeroManager = function(game,level) {
 	this.sprite = null;
 
 	this.posX = 10;
-	this.posY = 260;
+	this.posY = 255;
 
 	this.weight = 3;
 
@@ -76,12 +76,17 @@ HeroManager.prototype = {
 				//saut
         if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.time.now > this.jumpTimer)
         {
-            this.sprite.body.velocity.y = -300;
+            this.sprite.body.velocity.y = -600;
             this.jumpTimer = game.time.now + 1500;
         }
 
 				//monter à l'echelle
 
+				//recup des burger
+				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getBurgers() , this._eatBurger, null, this);
+
+				//recup des legumes
+				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getVegetables() , this._eatVegetable, null, this);
 
 				// pouvoire 1 - 2 -3
 /*
@@ -105,6 +110,16 @@ HeroManager.prototype = {
         }
         */
     },
+
+		 _eatBurger : function(hero,burger) {
+			 this.weight = this.weight + 1;
+			 burger.kill();
+		 },
+
+		 _eatVegetable : function(hero,vegetable) {
+			 this.weight = this.weight - 1;
+			 vegetable.kill();
+		 },
 
 		 _addPhaserDude : function() {
 			 //change power
