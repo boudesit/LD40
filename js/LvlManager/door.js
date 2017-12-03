@@ -9,13 +9,13 @@ function door(game, posX, posY, bonus) {
 
 door.prototype.create = function create() {
 
-  // if(this.bonus) {
-	//    this.doorSprite = this.game.add.sprite(this.posX, this.posY, "bonus-door", 0);
-  // } else {
+  if(this.bonus) {
+	   this.doorSprite = this.game.add.sprite(this.posX, this.posY, "bonus-door", 0);
+  } else {
     this.doorSprite = this.game.add.sprite(this.posX, this.posY, "door", 0);
-  // }
+  }
 
-  this.doorSprite.animations.add('idle', [0,1,2]);
+  this.doorSprite.animations.add('idle');
   this.doorSprite.animations.play('idle', 30, true);
 
 	this.doorSprite.enableBody = true;
