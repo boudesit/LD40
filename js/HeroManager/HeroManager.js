@@ -5,7 +5,7 @@ var HeroManager = function(game,level) {
 	this.sprite = null;
 
 	this.posX = 10;
-	this.posY = 255;
+	this.posY = 210;
 
 	this.weight = 3;
 
