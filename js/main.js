@@ -10,8 +10,6 @@ function create() {
 	game.state.add("Preload",preload);
 	game.state.add("GameTitle",gameTitle);
 	game.state.add("TheGame",theGame);
-	game.state.add("GameOver",gameOver);
-	game.state.add("GameWin",gameWin);
 	game.state.add("GameTuto",gameTuto);
 	game.state.add("GameScore",gameScore);
 	game.state.start("Boot");
