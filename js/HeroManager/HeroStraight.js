@@ -54,3 +54,10 @@ HeroStraight.prototype.getAnimationJump = function getAnimationJump(sprite) {
 HeroStraight.prototype.getAnimationClimb = function getAnimationClimb(sprite) {
 		sprite.animations.play('hero_semi_climb');
 };
+HeroStraight.prototype.getAnimationBreak = function getAnimationClimb(sprite) {
+		sprite.animations.play('hero_semi_idle');
+};
+
+HeroStraight.prototype.getDamageBreak = function getDamageBreak(sprite) {
+	return 0;
+};

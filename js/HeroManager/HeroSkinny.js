@@ -53,3 +53,11 @@ HeroSkinny.prototype.getAnimationJump = function getAnimationJump(sprite) {
 HeroSkinny.prototype.getAnimationClimb = function getAnimationClimb(sprite) {
 		sprite.animations.play('hero_light_climb');
 };
+
+HeroSkinny.prototype.getAnimationBreak = function getAnimationBreak(sprite) {
+	sprite.animations.play('hero_light_idle');
+};
+
+HeroSkinny.prototype.getDamageBreak = function getDamageBreak(sprite) {
+	return 0;
+};

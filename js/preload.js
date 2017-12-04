@@ -44,6 +44,8 @@ preload.prototype = {
 		this.game.load.spritesheet('hero_fat_idle', 'images/Player/fat/player-fat-idle.png',40,100,3);
 		this.game.load.spritesheet('hero_fat_walk', 'images/Player/fat/player-fat-walk.png',40,100,3);
 		this.game.load.spritesheet('hero_fat_climb', 'images/Player/fat/player-fat-climb.png',30,80,3);
+		this.game.load.spritesheet('hero_fat_break', 'images/Player/fat/player-fat-break.png',40,100,2);
+
 
 		// le vieul maigre
 		this.game.load.spritesheet('hero_light_climb', 'images/Player/light/player-light-climb.png',30,80,3);

@@ -59,3 +59,11 @@ HeroFat.prototype.getAnimationPower = function getAnimationJump(sprite) {
 HeroFat.prototype.getAnimationClimb = function getAnimationClimb(sprite) {
 		sprite.animations.play('hero_fat_climb');
 };
+
+HeroFat.prototype.getAnimationBreak = function getAnimationClimb(sprite) {
+		sprite.animations.play('hero_fat_break');
+};
+
+HeroFat.prototype.getDamageBreak = function getDamageBreak(sprite) {
+	return 1;
+};
