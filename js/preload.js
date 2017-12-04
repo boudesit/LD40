@@ -11,7 +11,7 @@ preload.prototype = {
 		this.game.load.spritesheet('gametitle', 'images/Backgrounds/background-start.png', 800, 600,6);
 		this.game.load.spritesheet('gameover', 'images/Backgrounds/background-score.png', 800, 600,3);
 		this.game.load.spritesheet('gamewin', 'images/Backgrounds/background-score.png',800, 600,2);
-		this.game.load.spritesheet('background', 'images/Backgrounds/background-game2.png', 800, 600,6);
+		this.game.load.spritesheet('background', 'images/Backgrounds/background-game.png', 800, 600,12);
 
 
 		this.game.load.spritesheet('plateform50','images/Items/item-plateform-50px.png',50,20,1);
