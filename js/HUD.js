@@ -19,6 +19,9 @@ HUD.prototype.create = function create() {
 	this.timeDelay = 0;
    this.spriteBG =  game.add.tileSprite(0 , 0, 800, 600, 'background');
 
+	 this.spriteBG.animations.add('background');
+   this.spriteBG.animations.play('background', 30, true);
+
 	 this.lvlManager = new lvlManager(this.game, 0);
  	 this.lvlManager.create();
 
