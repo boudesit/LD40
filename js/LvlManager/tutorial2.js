@@ -71,7 +71,7 @@ tutorial2.prototype.create = function create() {
 		this.createVegetables();
 		this.createWalls();
 
-	  this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	  // this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 	  //this.exit.onDown.add(this.lvlEnding, this);
 	};
 
