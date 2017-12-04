@@ -83,5 +83,6 @@ HUD.prototype.lose = function lose() {
 
 HUD.prototype.win = function win() {
 	this.music.pause();
+	this.game.scoreTotal = 	this.hero._getScore();
 	this.game.state.start("GameWin");
 }

@@ -11,20 +11,20 @@ function lvlManager(game, lvlNumber) {
 };
 
 lvlManager.prototype.create = function create() {
-
-  console.log("launch lvl");
   if(this.lvlNumber === 0) {
-    console.log(this.lvlNumber);
-
     this.lvl = new tutorial1(this.game);
     this.lvl.create();
-
   }
 };
 
 
 
 lvlManager.prototype.update = function update() {
+	if(game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+				this.game.state.start("GameScore");
+	}
+
+
 	this.lvl.update();
 };
 
@@ -46,18 +46,16 @@ lvlManager.prototype._getNextLvl = function _getNextLvl() {
   this.lvlNumber++;
 
 	if (this.lvlNumber == 1) {
-
 		this.lvl = new tutorial2(this.game);
 		this.lvl.create();
 
 	}	else if (this.lvlNumber == 2) {
-
 			this.lvl = new lvl1(this.game);
 			this.lvl.create();
 
 		} else {
 		this.inactive = true;
-		this.game.state.start("GameWin");
+		this.game.state.start("GameScore");
 	}
 }
 };
