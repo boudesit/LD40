@@ -16,7 +16,7 @@ lvlManager.prototype.create = function create() {
   if(this.lvlNumber === 0) {
     console.log(this.lvlNumber);
 
-    this.lvl = new lvl2(this.game);
+    this.lvl = new tutorial1(this.game);
     this.lvl.create();
 
   }
@@ -55,6 +55,10 @@ lvlManager.prototype._getNextLvl = function _getNextLvl() {
 			this.lvl = new lvl1(this.game);
 			this.lvl.create();
 
+		} else if this.lvlNumber == 3) {
+
+			this.lvl = new lvl2(this.game);
+			this.lvl.create();
 		} else {
 		this.inactive = true;
 		this.game.state.start("GameWin");
