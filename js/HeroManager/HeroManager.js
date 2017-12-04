@@ -22,6 +22,8 @@ var HeroManager = function(game,level) {
 	this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	this.game.camera.onFadeComplete.add(this._goToNextLvl, this);
 
+	this.doorTaken = this.game.add.group();
+
 }
 
 HeroManager.prototype = {
@@ -127,18 +129,53 @@ HeroManager.prototype = {
 
     },
 
-			_onDoors : function(hero,doors) {
+			_onDoors : function(hero,door) {
 
-				//add text au dessus de la porte
-				if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
-				{
-					this.game.camera.fade(0x000000, 1000);
+					//add text au dessus de la porte
+					if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+						if(this._getHeroProperties() === this.heroSkinny && door.bonus) {
+							door.destroy();
+							door = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
+							door.animations.add('animation-bonus', [0] );
+							door.animations.play('animation-bonus');
 
+							this.doorTaken.add(door);
+							this.game.camera.fade(0x000000, 1000);
+
+					} else if (door.bonus) {
+						door.destroy();
+						door = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
+						door.animations.add('animation-bonus', [2] );
+						door.animations.play('animation-bonus');
+						door.bonus = true;
+						this.doorTaken.add(door);
+
+						//add animation for door
+					}else if(!door.bonus) {
+
+						door.destroy();
+						door = this.game.add.sprite(door.x, door.y, "animation", 0);
+						if(this._getHeroProperties() === this.heroSkinny) {
+							door.animations.add('animation-bonus', [0] );
+							door.animations.play('animation-bonus');
+						} else if(this._getHeroProperties() === this.heroStraight) {
+							door.animations.add('animation-bonus', [1] );
+							door.animations.play('animation-bonus');
+						} else if(this._getHeroProperties() === this.heroFat) {
+							door.animations.add('animation-bonus', [2] );
+							door.animations.play('animation-bonus');
+						}
+
+						this.doorTaken.add(door);
+						this.game.camera.fade(0x000000, 1000);
+					}
 				}
 
 			},
 
 			_goToNextLvl : function() {
+				this.doorTaken.visible = false;
+				this.doorTaken.destroy();
 				this.level._getNextLvl();
 				game.world.bringToTop(this.sprite);
 				this.game.camera.resetFX();

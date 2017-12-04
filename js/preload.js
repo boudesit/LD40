@@ -31,6 +31,8 @@ preload.prototype = {
 		this.game.load.spritesheet('vegetable','images/Items/item-legume.png',34,33,3);
 		this.game.load.spritesheet('wall','images/Items/item-mur.png',40,97,3);
 
+		this.game.load.spritesheet('animation-bonus','images/Items/item-balance-bonus.png',40,80,3);
+		this.game.load.spritesheet('animation','images/Items/item-balance.png',40,80,3);
 
     this.game.load.spritesheet('hero', 'images/Player/player.png',40,100,33);
 

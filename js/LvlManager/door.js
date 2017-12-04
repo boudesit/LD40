@@ -13,6 +13,7 @@ door.prototype.create = function create() {
 	   this.doorSprite = this.game.add.sprite(this.posX, this.posY, "bonus-door", 0);
   } else {
     this.doorSprite = this.game.add.sprite(this.posX, this.posY, "door", 0);
+		this.doorSprite.animations.add('animation', 'animation');
   }
 
   this.doorSprite.animations.add('idle');
@@ -35,6 +36,14 @@ door.prototype.update = function update() {
 
 door.prototype.getSprite =function getSprite() {
 	return this.doorSprite;
+};
+
+door.prototype.getAnimation = function getAnimation() {
+  this.animation.animations.play('animation-bonus', 10, true);
+};
+
+door.prototype.getAnimation = function getAnimation() {
+	this.animation.animations.play('animation', 10, true);
 };
 
 door.prototype.getBonus = function getBonus() {
