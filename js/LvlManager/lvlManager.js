@@ -32,11 +32,11 @@ lvlManager.prototype.create = function create() {
 
 lvlManager.prototype.update = function update() {
 
-	if(game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+	/*if(game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
 		this.music.pause();
 		this.game.state.start("GameScore");
 	}
-
+*/
 	this.lvl.update();
 };
 
