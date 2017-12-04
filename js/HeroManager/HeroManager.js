@@ -25,6 +25,14 @@ var HeroManager = function(game,level) {
 	this.game.camera.onFadeComplete.add(this._goToNextLvl, this);
 
 	this.doorTaken = this.game.add.group();
+
+	this.eatBurgerSound = null;
+	this.eatVegetableSound = null;
+	this.doorNokSound = null;
+	this.doorOkSound = null;
+	this.breakWallSound = null;
+
+
 }
 
 HeroManager.prototype = {
@@ -44,6 +52,13 @@ HeroManager.prototype = {
 		this.heroSkinny = new HeroSkinny(this.game);
 		this.heroSkinny.create();
 
+		this.eatBurgerSound = game.add.audio('eat-burgerSound');
+		this.eatVegetableSound = game.add.audio('eat-vegetableSound');
+
+		this.doorOkSound = game.add.audio('porte-nokSound');
+		this.doorNokSound = game.add.audio('porte-okSound');
+
+		this.breakWallSound = game.add.audio('break-wallSound');
 		//Sprite
 		this.sprite = this.game.add.sprite(this.posX,this.posY, 'hero');
 
@@ -135,6 +150,7 @@ HeroManager.prototype = {
 					//add text au dessus de la porte
 					if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
 						if(this._getHeroProperties() === this.heroSkinny && door.bonus) {
+							this.doorOkSound.play();
 							door.destroy();
 							this._incrementScore(1000);
 							door = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
@@ -145,6 +161,7 @@ HeroManager.prototype = {
 							this.game.camera.fade(0x000000, 1000);
 
 					} else if (door.bonus) {
+						this.doorNokSound.play();
 						this.animatedDoor = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
 						this.animatedDoor.animations.add('animation-bonus', [2] );
 						this.animatedDoor.animations.play('animation-bonus');
@@ -154,6 +171,7 @@ HeroManager.prototype = {
 						//add animation for door
 					}else if(!door.bonus) {
 
+						this.doorOkSound.play();
 						door.destroy();
 						door = this.game.add.sprite(door.x, door.y, "animation", 0);
 						if(this._getHeroProperties() === this.heroSkinny) {
@@ -213,6 +231,7 @@ HeroManager.prototype = {
 
 				if (this.spaceKey.isDown && !this.isSpacePress)
 				{
+						this.breakWallSound.play();
 						this._getHeroProperties().getAnimationBreak(this._getSprite());
 						wall.damage += this._getHeroProperties().getDamageBreak();
 
@@ -224,6 +243,7 @@ HeroManager.prototype = {
 
 				this.weight = this.weight + 1;
 		 	 }
+			 this.eatBurgerSound.play();
 			 burger.kill();
 			 this._incrementScore(100);
 			 this._getHeroProperties().getAnimationIdle(this._getSprite());
@@ -234,6 +254,7 @@ HeroManager.prototype = {
 
 			 	this.weight = this.weight - 1;
 		 	 }
+			 this.eatVegetableSound.play();
 			 vegetable.kill();
 			 this._incrementScore(-50);
 			 this._getHeroProperties().getAnimationIdle(this._getSprite());
