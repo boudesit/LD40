@@ -53,22 +53,28 @@ lvlManager.prototype._getlvl = function _getlvl() {
 lvlManager.prototype._getNextLvl = function _getNextLvl() {
 
 	if (!this.inactive) {
-	this.lvl.destroyAll();
+		this.lvl.destroyAll();
 
-  this.lvlNumber++;
+	  this.lvlNumber++;
 
-	if (this.lvlNumber == 1) {
-		this.lvl = new tutorial2(this.game);
-		this.lvl.create();
+		if (this.lvlNumber == 1) {
 
-	}	else if (this.lvlNumber == 2) {
-			this.lvl = new lvl1(this.game);
+			this.lvl = new tutorial2(this.game);
 			this.lvl.create();
 
-		} else {
-		this.inactive = true;
-		this.music.pause();
-		this.game.state.start("GameScore");
+		}	else if (this.lvlNumber == 2) {
+
+				this.lvl = new lvl1(this.game);
+				this.lvl.create();
+
+			} else if (this.lvlNumber == 3) {
+
+				this.lvl = new lvl2(this.game);
+				this.lvl.create();
+			} else {
+			this.inactive = true;
+			this.music.pause();
+			this.game.state.start("GameScore");
+		}
 	}
-}
 };
