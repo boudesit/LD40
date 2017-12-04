@@ -2,7 +2,7 @@ var HeroStraight = function(game) {
 
 	this.game = game;
 	this.speed = 200;
-	this.jump = 300;
+	this.jump = 200;
 	this.speedLadder = 100;
 	this.jumpDuration = 1400;
 	this.portebonus = true;
@@ -53,4 +53,11 @@ HeroStraight.prototype.getAnimationJump = function getAnimationJump(sprite) {
 
 HeroStraight.prototype.getAnimationClimb = function getAnimationClimb(sprite) {
 		sprite.animations.play('hero_semi_climb');
+};
+HeroStraight.prototype.getAnimationBreak = function getAnimationClimb(sprite) {
+		sprite.animations.play('hero_semi_idle');
+};
+
+HeroStraight.prototype.getDamageBreak = function getDamageBreak(sprite) {
+	return 0;
 };

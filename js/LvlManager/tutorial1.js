@@ -171,7 +171,7 @@ tutorial1.prototype.createScales = function createScales() {
 
 tutorial1.prototype.createDoors = function createDoors() {
 
-	this.bonusDoor = new door(this.game, 0, 30, true);
+	this.bonusDoor = new door(this.game, 0, 20, true);
 	this.bonusDoor.create();
 
 	this.door = new door(this.game, 750, 420, false);
@@ -271,4 +271,16 @@ tutorial1.prototype.getPlateforms = function getPlateforms() {
 
 tutorial1.prototype.getWalls = function getWalls() {
 	return this.walls;
+};
+
+tutorial1.prototype.destroyAll = function destroyAll() {
+
+	this.plateforms.destroy();
+	this.scales.destroy();;
+	this.doors.destroy();
+
+	this.burgers.destroy();
+	this.vegetables.destroy();
+
+	this.walls.destroy();
 };

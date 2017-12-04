@@ -12,17 +12,16 @@ wall.prototype.create = function create() {
   this.wallSprite = this.game.add.sprite(this.posX, this.posY, "wall", 0);
 
   this.wallSprite.animations.add('idle', [0]);
+	this.game.physics.arcade.enable(this.wallSprite);
+	this.wallSprite.physicsBodyType = Phaser.Physics.ARCADE;
+	// this.wallSprite.body.setSize(97, 40, 0, 0);
 
 	this.wallSprite.enableBody = true;
-	this.game.physics.arcade.enable(this.wallSprite);
-	this.wallSprite.body.velocity.x = 0;
-	this.wallSprite.body.velocity.y = 0;
-	this.wallSprite.physicsBodyType = Phaser.Physics.ARCADE;
 	this.wallSprite.body.immovable = true;
 	this.wallSprite.body.moves = false;
+
 	this.wallSprite.type = "wall";
 	this.wallSprite.damage = 0;
-
 };
 
 wall.prototype.update = function update() {

@@ -13,15 +13,23 @@ var HeroManager = function(game,level) {
 	this.idleTimer = 0;
 	this.isSpacePress = false;
 
+
 	this.heroFat = null;
 	this.heroStraight = null;
 	this.heroSkinny = null;
 	this.facing = null;
+
+	this.animatedDoor = null;
+
+	this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+	this.game.camera.onFadeComplete.add(this._goToNextLvl, this);
+
+	this.doorTaken = this.game.add.group();
+
 }
 
 HeroManager.prototype = {
     create: function() {
-
 		//sound
 
 		//gravity
@@ -50,6 +58,7 @@ HeroManager.prototype = {
 		this.sprite.animations.add('hero_fat_idle', [16, 17,18], 10, true);
 		this.sprite.animations.add('hero_fat_walk', [19, 20, 21], 10, true);
 
+
 		this.sprite.animations.add('hero_semi_climb', [22, 23, 24], 10, true);
 		this.sprite.animations.add('hero_semi_idle', [25, 26, 27], 10, true);
 		this.sprite.animations.add('hero_semi_jump', [28, 29], 10, true);
@@ -59,15 +68,13 @@ HeroManager.prototype = {
 		this.sprite.physicsBodyType = Phaser.Physics.ARCADE;
 		this.sprite.enableBody = true;
 		this.sprite.body.collideWorldBounds=true;
+		this.sprite.body.checkCollision.up = false;
+		this.sprite.body.setSize(10, 40, 10, 60);
 		this.sprite.anchor.set(0.5);
 		this.sprite.scale.setTo(1,1);
-		this.sprite.body.bounce.y = 0.2;
+		this.sprite.body.bounce.y = 0;
 
 		this._getHeroProperties().getAnimationIdle(this._getSprite());
-
-
-		var key1 = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    //key1.onDown.add(this._addPhaserDude, this);
 
     },
 
@@ -99,10 +106,6 @@ HeroManager.prototype = {
 				//entrer porte et portebonus
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getDoors() , this._onDoors, null, this);
 
-				//utiliser pouvoire
-				// pouvoire 1 - 2 -3
-
-
 				//collision
 				game.physics.arcade.collide(  this._getSprite() , this.level._getlvl().getPlateforms() , this._jump, null, this);
 				//ba si tu collide avec le sol ba vas te faire foutre
@@ -111,33 +114,84 @@ HeroManager.prototype = {
 				//monter à l'echelle
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getScales() , this._climbLadder, null, this);
 
+				game.physics.arcade.collide(  this._getSprite() , this.level._getlvl().getWalls() , this._breakWall, null, this);
+
 				//recup des burger
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getBurgers() , this._eatBurger, null, this);
 
 				//recup des legumes
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getVegetables() , this._eatVegetable, null, this);
+
+
+				if(this.sprite.body.onFloor()) {
+					this._jump();
+				}
+
+				this.isSpacePress = this.spaceKey.isDown;
+
     },
 
-			_onDoors : function(hero,doors) {
+			_onDoors : function(hero,door) {
 
-				//add text au dessus de la porte
-				if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
-				{
-					//chargé le niveau suivant
-					//this.level.getNextLvl();
+					//add text au dessus de la porte
+					if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+						if(this._getHeroProperties() === this.heroSkinny && door.bonus) {
+							door.destroy();
+							door = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
+							door.animations.add('animation-bonus', [0] );
+							door.animations.play('animation-bonus');
+
+							this.doorTaken.add(door);
+							this.game.camera.fade(0x000000, 1000);
+
+					} else if (door.bonus) {
+						this.animatedDoor = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
+
+						this.animatedDoor.animations.add('animation-bonus', [2] );
+						this.animatedDoor.animations.play('animation-bonus');
+						this.animatedDoor.bonus = true;
+						this.doorTaken.add(this.animatedDoor);
+
+						//add animation for door
+					}else if(!door.bonus) {
+
+						door.destroy();
+						door = this.game.add.sprite(door.x, door.y, "animation", 0);
+						if(this._getHeroProperties() === this.heroSkinny) {
+							door.animations.add('animation-bonus', [0] );
+							door.animations.play('animation-bonus');
+						} else if(this._getHeroProperties() === this.heroStraight) {
+							door.animations.add('animation-bonus', [1] );
+							door.animations.play('animation-bonus');
+						} else if(this._getHeroProperties() === this.heroFat) {
+							door.animations.add('animation-bonus', [2] );
+							door.animations.play('animation-bonus');
+						}
+
+						this.doorTaken.add(door);
+						this.game.camera.fade(0x000000, 1000);
+					}
 				}
+
+			},
+
+			_goToNextLvl : function() {
+				this.level._getNextLvl();
+				game.world.bringToTop(this.sprite);
+				this.game.camera.resetFX();
+				this.doorTaken.visible = false;
+				this.doorTaken.destroy();
 
 			},
 
 			_jump : function(hero,platform) {
 
 				//saut
-        if (game.input.keyboard.isDown(Phaser.Keyboard.W) && game.time.now > this.jumpTimer)
+        if (game.input.keyboard.isDown(Phaser.Keyboard.W))
         {
 						this._getHeroProperties().getAnimationJump(this._getSprite());
             this.sprite.body.velocity.y = - this._getHeroProperties().getJump();
 						//ajouter un jump timer selon la corpulance
-            this.jumpTimer = game.time.now + this._getHeroProperties().getJumpDuration();
         }
 
 			},
@@ -153,6 +207,16 @@ HeroManager.prototype = {
 				{
 						this._getHeroProperties().getAnimationClimb(this._getSprite());
 						this.sprite.body.velocity.y = this._getHeroProperties().getSpeedLadder();
+				}
+			},
+
+			_breakWall : function(hero, wall) {
+
+				if (this.spaceKey.isDown && !this.isSpacePress)
+				{
+						this._getHeroProperties().getAnimationBreak(this._getSprite());
+						wall.damage += this._getHeroProperties().getDamageBreak();
+
 				}
 			},
 
