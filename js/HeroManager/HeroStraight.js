@@ -2,7 +2,7 @@ var HeroStraight = function(game) {
 
 	this.game = game;
 	this.speed = 200;
-	this.jump = 300;
+	this.jump = 200;
 	this.speedLadder = 100;
 	this.jumpDuration = 1400;
 	this.portebonus = true;

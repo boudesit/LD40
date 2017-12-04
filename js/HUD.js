@@ -17,10 +17,10 @@ function HUD(game) {
 HUD.prototype.create = function create() {
 
 	this.timeDelay = 0;
-   this.spriteBG =  game.add.tileSprite(0 , 0, 800, 600, 'background');
+   this.spriteBG =  this.game.add.tileSprite(0 , 0, 800, 600, 'background');
 
-	 this.spriteBG.animations.add('background');
-   this.spriteBG.animations.play('background', 30, true);
+	 this.spriteBG.animations.add('background', [0,1,2,3,4,5,4,3,2,1,0]);
+   this.spriteBG.animations.play('background', 4, true);
 
 	 this.lvlManager = new lvlManager(this.game, 0);
  	 this.lvlManager.create();
