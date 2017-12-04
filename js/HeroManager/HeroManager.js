@@ -19,6 +19,8 @@ var HeroManager = function(game,level) {
 	this.heroSkinny = null;
 	this.facing = null;
 
+	this.animatedDoor = null;
+
 	this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	this.game.camera.onFadeComplete.add(this._goToNextLvl, this);
 
@@ -143,12 +145,12 @@ HeroManager.prototype = {
 							this.game.camera.fade(0x000000, 1000);
 
 					} else if (door.bonus) {
-						door.destroy();
-						door = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
-						door.animations.add('animation-bonus', [2] );
-						door.animations.play('animation-bonus');
-						door.bonus = true;
-						this.doorTaken.add(door);
+						this.animatedDoor = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
+
+						this.animatedDoor.animations.add('animation-bonus', [2] );
+						this.animatedDoor.animations.play('animation-bonus');
+						this.animatedDoor.bonus = true;
+						this.doorTaken.add(this.animatedDoor);
 
 						//add animation for door
 					}else if(!door.bonus) {
@@ -174,11 +176,11 @@ HeroManager.prototype = {
 			},
 
 			_goToNextLvl : function() {
-				this.doorTaken.visible = false;
-				this.doorTaken.destroy();
 				this.level._getNextLvl();
 				game.world.bringToTop(this.sprite);
 				this.game.camera.resetFX();
+				this.doorTaken.visible = false;
+				this.doorTaken.destroy();
 
 			},
 
