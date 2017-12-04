@@ -1,13 +1,10 @@
-var gameTitle = function(game){}
+var gameTuto = function(game){}
 
-gameTitle.prototype = {
+gameTuto.prototype = {
   	create: function(){
 
-  		this.game.introSound = game.add.audio('introSound', 1, true);
+      this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'gametuto');
 
-      this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'gametitle');
-      this.spriteBG.animations.add('gametitle');
-      this.spriteBG.animations.play('gametitle', 3, true);
 
   		this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		  this.startButton.onDown.add(this.playTheGame, this);
@@ -21,6 +18,7 @@ gameTitle.prototype = {
     	}
 	},
 	playTheGame: function(){
-		this.game.state.start("GameTuto");
+		this.game.introSound.pause();
+		this.game.state.start("TheGame");
 	}
 }

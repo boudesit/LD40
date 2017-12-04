@@ -10,6 +10,8 @@ preload.prototype = {
 		this.game.load.spritesheet('gameover', 'assets/images/Backgrounds/background-score.png', 800, 600,3);
 		this.game.load.spritesheet('gamewin', 'assets/images/Backgrounds/background-score.png',800, 600,2);
 		this.game.load.spritesheet('background', 'assets/images/Backgrounds/background-game.png', 800, 600,12);
+		this.game.load.spritesheet('gametuto', 'assets/images/Backgrounds/background-tuto.png', 800, 600,1);
+
 
 
 		this.game.load.spritesheet('plateform50','assets/images/Items/item-plateform-50px.png',50,20,1);
