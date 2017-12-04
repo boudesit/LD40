@@ -25,7 +25,6 @@ var HeroManager = function(game,level) {
 	this.game.camera.onFadeComplete.add(this._goToNextLvl, this);
 
 	this.doorTaken = this.game.add.group();
-	this.score = 0;
 }
 
 HeroManager.prototype = {
@@ -261,15 +260,12 @@ HeroManager.prototype = {
     },
 
 		_incrementScore :function(valeur) {
-			if(this.score >= 0) {
-				this.score += valeur;
-				if(this.score <= 0) {
-					this.score = 0;
+			if(this.game.score >= 0) {
+				this.game.score += valeur;
+				if(this.game.score <= 0) {
+					this.game.score = 0;
 				}
 			}
 		},
 
-		_getScore :function() {
-				return this.score;
-		},
 }
