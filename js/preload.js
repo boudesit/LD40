@@ -2,7 +2,7 @@ var preload = function(game){}
 
 preload.prototype = {
 	preload: function(){
-        var loadingBar = this.add.sprite(200,240,"loading");
+        var loadingBar = this.add.sprite(0,0,"loading");
         this.load.setPreloadSprite(loadingBar);
 
     //Spritesheet
