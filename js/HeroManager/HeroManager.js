@@ -65,7 +65,7 @@ HeroManager.prototype = {
 		this.sprite.enableBody = true;
 		this.sprite.body.collideWorldBounds=true;
 		this.sprite.body.checkCollision.up = false;
-		this.sprite.body.setSize(10, 50, 10, 50);
+		this.sprite.body.setSize(10, 40, 10, 60);
 		this.sprite.anchor.set(0.5);
 		this.sprite.scale.setTo(1,1);
 		this.sprite.body.bounce.y = 0;
