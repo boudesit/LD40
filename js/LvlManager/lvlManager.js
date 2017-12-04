@@ -6,6 +6,7 @@ function lvlManager(game, lvlNumber) {
 	this.murCenter = null;
 	this.murDroite = null;
 	this.murGauche = null;
+	this.isCreated = false;
 };
 
 lvlManager.prototype.create = function create() {
@@ -17,11 +18,7 @@ lvlManager.prototype.create = function create() {
     this.lvl = new tutorial1(this.game);
     this.lvl.create();
 
-  } else if (this.lvlNumber == 1) {
-    console.log(this.lvlNumber);
-
   }
-
 };
 
 
@@ -38,4 +35,16 @@ lvlManager.prototype._getMur = function _getMur() {
 
 lvlManager.prototype._getlvl = function _getlvl() {
   return this.lvl;
+};
+
+lvlManager.prototype._getNextLvl = function _getNextLvl() {
+	
+	this.lvl.destroyAll();
+
+  this.lvlNumber++;
+
+	if (this.lvlNumber == 1) {
+		this.lvl = new tutorial2(this.game);
+		this.lvl.create();
+	}
 };

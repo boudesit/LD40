@@ -20,6 +20,7 @@ var HeroManager = function(game,level) {
 	this.facing = null;
 
 	this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+	this.game.camera.onFadeComplete.add(this._goToNextLvl, this);
 
 }
 
@@ -101,10 +102,6 @@ HeroManager.prototype = {
 				//entrer porte et portebonus
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getDoors() , this._onDoors, null, this);
 
-				//utiliser pouvoire
-				// pouvoire 1 - 2 -3
-
-
 				//collision
 				game.physics.arcade.collide(  this._getSprite() , this.level._getlvl().getPlateforms() , this._jump, null, this);
 				//ba si tu collide avec le sol ba vas te faire foutre
@@ -121,6 +118,7 @@ HeroManager.prototype = {
 				//recup des legumes
 				game.physics.arcade.overlap(  this._getSprite() , this.level._getlvl().getVegetables() , this._eatVegetable, null, this);
 
+
 				if(this.sprite.body.onFloor()) {
 					this._jump();
 				}
@@ -134,9 +132,16 @@ HeroManager.prototype = {
 				//add text au dessus de la porte
 				if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR))
 				{
-					//chargé le niveau suivant
-					//this.level.getNextLvl();
+					this.game.camera.fade(0x000000, 1000);
+
 				}
+
+			},
+
+			_goToNextLvl : function() {
+				this.level._getNextLvl();
+				game.world.bringToTop(this.sprite);
+				this.game.camera.resetFX();
 
 			},
 

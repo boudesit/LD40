@@ -1,4 +1,4 @@
-function tutorial1(game) {
+function tutorial2(game) {
 	this.game = game;
 
 	this.plateform1 = null;
@@ -55,7 +55,7 @@ function tutorial1(game) {
 
 };
 
-tutorial1.prototype.create = function create() {
+tutorial2.prototype.create = function create() {
 
 		this.createPlateforms();
 		this.createScales();
@@ -69,7 +69,7 @@ tutorial1.prototype.create = function create() {
 	};
 
 
-	tutorial1.prototype.createPlateforms = function createPlateforms() {
+	tutorial2.prototype.createPlateforms = function createPlateforms() {
 
 		this.createFirstLine();
 		this.createSecondLine();
@@ -78,10 +78,10 @@ tutorial1.prototype.create = function create() {
 	};
 
 
-tutorial1.prototype.createFirstLine = function createFirstLine() {
+tutorial2.prototype.createFirstLine = function createFirstLine() {
 
 	// First Line of Plateform
-	this.plateform1 = new platform(this.game, 0, 500, 150);
+	this.plateform1 = new platform(this.game, 0, 400, 150);
 	this.plateform1.create();
 
 	this.plateform2 = new platform(this.game, 150, 500, 150);
@@ -101,7 +101,7 @@ tutorial1.prototype.createFirstLine = function createFirstLine() {
 
 
 
-tutorial1.prototype.createSecondLine = function createSecondLine() {
+tutorial2.prototype.createSecondLine = function createSecondLine() {
 	// Second Line of Plateform
 
 	this.plateform5 = new platform(this.game, 0, 300, 100);
@@ -128,7 +128,7 @@ tutorial1.prototype.createSecondLine = function createSecondLine() {
 	this.plateforms.add(this.plateform10.getSprite());
 };
 
-tutorial1.prototype.createThirdLine = function createThirdLine() {
+tutorial2.prototype.createThirdLine = function createThirdLine() {
 
 	this.plateform11 = new platform(this.game, 0, 100, 400);
 	this.plateform12 = new platform(this.game, 400, 100, 150);
@@ -149,7 +149,7 @@ tutorial1.prototype.createThirdLine = function createThirdLine() {
 
 };
 
-tutorial1.prototype.createScales = function createScales() {
+tutorial2.prototype.createScales = function createScales() {
 
 	this.scale1 = new scale(this.game, 300, 500, 100);
 	this.scale1.create();
@@ -169,7 +169,7 @@ tutorial1.prototype.createScales = function createScales() {
 	this.scales.add(this.scale4.getSprite());
 };
 
-tutorial1.prototype.createDoors = function createDoors() {
+tutorial2.prototype.createDoors = function createDoors() {
 
 	this.bonusDoor = new door(this.game, 0, 30, true);
 	this.bonusDoor.create();
@@ -182,7 +182,7 @@ tutorial1.prototype.createDoors = function createDoors() {
 
 };
 
-tutorial1.prototype.createBurger = function createBurger() {
+tutorial2.prototype.createBurger = function createBurger() {
 
 	this.burger1 = new burger(this.game, 250, 267);
 	this.burger1.create();
@@ -208,7 +208,7 @@ tutorial1.prototype.createBurger = function createBurger() {
 
 };
 
-tutorial1.prototype.createVegetables = function createVegetables() {
+tutorial2.prototype.createVegetables = function createVegetables() {
 
 	this.vegetable1 = new vegetable(this.game, 650, 467);
 	this.vegetable1.create();
@@ -230,7 +230,7 @@ tutorial1.prototype.createVegetables = function createVegetables() {
 
 };
 
-tutorial1.prototype.createWalls = function createWalls() {
+tutorial2.prototype.createWalls = function createWalls() {
 
 	this.wall1 = new wall(this.game, 556, 203);
 	this.wall1.create();
@@ -239,48 +239,36 @@ tutorial1.prototype.createWalls = function createWalls() {
 };
 
 
-tutorial1.prototype.update = function update() {
+tutorial2.prototype.update = function update() {
 
 	this.wall1.update();
 };
 
-tutorial1.prototype.lvlEnding = function lvlEnding(){
+tutorial2.prototype.lvlEnding = function lvlEnding(){
 
     this.wall1.getSprite().damage += 1;
 };
 
-tutorial1.prototype.getDoors = function getDoors() {
+tutorial2.prototype.getDoors = function getDoors() {
 	return this.doors;
 };
 
-tutorial1.prototype.getBurgers = function getBurgers() {
+tutorial2.prototype.getBurgers = function getBurgers() {
 	return this.burgers;
 };
 
-tutorial1.prototype.getVegetables = function getVegetables() {
+tutorial2.prototype.getVegetables = function getVegetables() {
 	return this.vegetables;
 };
 
-tutorial1.prototype.getScales = function getScales() {
+tutorial2.prototype.getScales = function getScales() {
 	return this.scales;
 };
 
-tutorial1.prototype.getPlateforms = function getPlateforms() {
+tutorial2.prototype.getPlateforms = function getPlateforms() {
 	return this.plateforms;
 };
 
-tutorial1.prototype.getWalls = function getWalls() {
+tutorial2.prototype.getWalls = function getWalls() {
 	return this.walls;
-};
-
-tutorial1.prototype.destroyAll = function destroyAll() {
-	
-	this.plateforms.destroy();
-	this.scales.destroy();;
-	this.doors.destroy();
-
-	this.burgers.destroy();
-	this.vegetables.destroy();
-
-	this.walls.destroy();
 };
