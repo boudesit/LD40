@@ -240,8 +240,6 @@ tutorial1.prototype.createWalls = function createWalls() {
 tutorial1.prototype.update = function update() {
 
 	this.wall1.update();
-	this.wall2.update();
-
 };
 
 

@@ -288,6 +288,7 @@ tutorial2.prototype.createWalls = function createWalls() {
 tutorial2.prototype.update = function update() {
 
 	this.wall1.update();
+	this.wall2.update();
 };
 
 tutorial2.prototype.getDoors = function getDoors() {
