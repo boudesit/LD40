@@ -7,6 +7,7 @@ function lvlManager(game, lvlNumber) {
 	this.murDroite = null;
 	this.murGauche = null;
 	this.isCreated = false;
+	this.inactive = false;
 };
 
 lvlManager.prototype.create = function create() {
@@ -39,14 +40,19 @@ lvlManager.prototype._getlvl = function _getlvl() {
 
 lvlManager.prototype._getNextLvl = function _getNextLvl() {
 
+	if (!this.inactive) {
 	this.lvl.destroyAll();
+	console.log(this.lvlNumber);
 
   this.lvlNumber++;
+	console.log(this.lvlNumber);
 
 	if (this.lvlNumber == 1) {
 		this.lvl = new tutorial2(this.game);
 		this.lvl.create();
 	} else {
+		this.inactive = true;
 		this.game.state.start("GameWin");
 	}
+}
 };
