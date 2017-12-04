@@ -3,7 +3,7 @@ var HeroSkinny = function(game) {
 	this.game = game;
   this.speed = 400;
 	this.speedLadder = 150;
-	this.jump = 400;
+	this.jump = 200;
 	this.jumpDuration = 1700;
 	this.portebonus = true;
 }

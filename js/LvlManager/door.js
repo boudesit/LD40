@@ -16,7 +16,7 @@ door.prototype.create = function create() {
   }
 
   this.doorSprite.animations.add('idle');
-  this.doorSprite.animations.play('idle', 30, true);
+  this.doorSprite.animations.play('idle', 10, true);
 
 	this.doorSprite.enableBody = true;
 	this.game.physics.arcade.enable(this.doorSprite);
