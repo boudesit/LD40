@@ -272,3 +272,15 @@ tutorial2.prototype.getPlateforms = function getPlateforms() {
 tutorial2.prototype.getWalls = function getWalls() {
 	return this.walls;
 };
+
+tutorial2.prototype.destroyAll = function destroyAll() {
+
+	this.plateforms.destroy();
+	this.scales.destroy();;
+	this.doors.destroy();
+
+	this.burgers.destroy();
+	this.vegetables.destroy();
+
+	this.walls.destroy();
+};

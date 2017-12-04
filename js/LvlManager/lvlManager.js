@@ -38,7 +38,7 @@ lvlManager.prototype._getlvl = function _getlvl() {
 };
 
 lvlManager.prototype._getNextLvl = function _getNextLvl() {
-	
+
 	this.lvl.destroyAll();
 
   this.lvlNumber++;
@@ -46,5 +46,7 @@ lvlManager.prototype._getNextLvl = function _getNextLvl() {
 	if (this.lvlNumber == 1) {
 		this.lvl = new tutorial2(this.game);
 		this.lvl.create();
+	} else {
+		this.game.state.start("GameWin");
 	}
 };
