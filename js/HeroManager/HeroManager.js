@@ -245,12 +245,12 @@ HeroManager.prototype = {
     },
 
 		_getHeroProperties : function() {
-				if(this.weight > 6)
+				if(this.weight >= 6)
 				{
 					//play sprite fat
 					return this.heroFat;
 				}
-				else if (this.weight < 3)
+				else if (this.weight <= 3)
 				{
 					return this.heroSkinny;
 				}

@@ -16,7 +16,7 @@ lvlManager.prototype.create = function create() {
   if(this.lvlNumber === 0) {
     console.log(this.lvlNumber);
 
-    this.lvl = new tutorial1(this.game);
+    this.lvl = new lvl2(this.game);
     this.lvl.create();
 
   }
