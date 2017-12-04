@@ -70,9 +70,6 @@ lvl1.prototype.create = function create() {
 		this.createBurger();
 		this.createVegetables();
 		this.createWalls();
-
-	  this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-	  this.exit.onDown.add(this.lvlEnding, this);
 	};
 
 
@@ -288,11 +285,6 @@ lvl1.prototype.createWalls = function createWalls() {
 lvl1.prototype.update = function update() {
 
 	this.wall1.update();
-};
-
-lvl1.prototype.lvlEnding = function lvlEnding(){
-
-    this.wall1.getSprite().damage += 1;
 };
 
 lvl1.prototype.getDoors = function getDoors() {

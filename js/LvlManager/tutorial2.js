@@ -290,11 +290,6 @@ tutorial2.prototype.update = function update() {
 	this.wall1.update();
 };
 
-tutorial2.prototype.lvlEnding = function lvlEnding(){
-
-    this.wall1.getSprite().damage += 1;
-};
-
 tutorial2.prototype.getDoors = function getDoors() {
 	return this.doors;
 };
