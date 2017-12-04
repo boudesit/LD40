@@ -4,15 +4,14 @@ function HUD(game) {
 	this.player = null;
 	this.computer = null;
 	this.lvlManager = null;
-  this.music = null;
-	this.music = null;
+
   this.spriteBG = null;
 	this.fight = null;
 	this.fightCastle = null;
 	this.computeRessourcesTkt = null;
 	this.hero = null;
 	this.timeDelay = 0;
-	this.score = 0;
+	this.game.score = 0;
   this.scoreText = '';
 };
 
@@ -35,18 +34,11 @@ HUD.prototype.create = function create() {
 	 this.explosionSound = game.add.audio('explosionSound');
  	 this.explosion  = game.add.sprite(-100,-100, 'explosion');
 
-   this.music = game.add.audio('gameSound', 1, true);
-	 if (this.music.isPlaying == false)
-	 {
-	 	 this.music.play();
-	 }else{
-	 	this.music.resume();
-	 }
 
 	// this.spriteBG.animations.add('backgroundAnime');
 	// this.spriteBG.animations.play('backgroundAnime', 10, true);
 	//  The score
-	this.scoreText = game.add.text(710, 10, this.score, { font: '30px Arial', fill: '#00FF00' });
+	this.scoreText = game.add.text(710, 10, this.game.score, { font: '30px Arial', fill: '#00FF00' });
 	this.scoreText2 = game.add.text(610, 9, 'score :', { font: '30px Arial', fill: '#00FF00' });
 
 	this.explosionSound = game.add.audio('explosionSound');
@@ -59,7 +51,7 @@ HUD.prototype.update = function update() {
 
   this.hero.update();
 	this.lvlManager.update();
-	this.scoreText.setText(this.hero._getScore());
+	this.scoreText.setText(this.game.score);
 
 	if (this.shakeWorld > 0)
 	{
@@ -75,13 +67,7 @@ HUD.prototype.update = function update() {
 };
 
 
-HUD.prototype.lose = function lose() {
+HUD.prototype.scoreScreen = function scoreScreen() {
 	this.music.pause();
-	this.game.scoreTotal = 	this.hero._getScore();
-	this.game.state.start("GameOver");
+	this.game.state.start("GameScore");
 };
-
-HUD.prototype.win = function win() {
-	this.music.pause();
-	this.game.state.start("GameWin");
-}

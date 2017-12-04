@@ -7,8 +7,7 @@ preload.prototype = {
 
     //Spritesheet
 		this.game.load.spritesheet('gametitle', 'assets/images/Backgrounds/background-start.png', 800, 600,6);
-		this.game.load.spritesheet('gameover', 'assets/images/Backgrounds/background-score.png', 800, 600,3);
-		this.game.load.spritesheet('gamewin', 'assets/images/Backgrounds/background-score.png',800, 600,2);
+		this.game.load.spritesheet('gamescore', 'assets/images/Backgrounds/background-score.png',800, 600,2);
 		this.game.load.spritesheet('background', 'assets/images/Backgrounds/background-game.png', 800, 600,12);
 
 
