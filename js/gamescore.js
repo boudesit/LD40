@@ -15,8 +15,8 @@ gameScore.prototype = {
       }
 
     var style = { font: "32px Comic Sans MS", fill: "#000000", align: "center" };
-    text = game.add.text(450, 325, this.game.scoreTotal, style);
-    
+    text = game.add.text(450, 325, this.game.score, style);
+
     this.restartButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     this.restartButton.onDown.add(this.playTheGame, this);
   },
