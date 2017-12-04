@@ -38,8 +38,8 @@ HUD.prototype.create = function create() {
 	// this.spriteBG.animations.add('backgroundAnime');
 	// this.spriteBG.animations.play('backgroundAnime', 10, true);
 	//  The score
-	this.scoreText = game.add.text(710, 10, this.game.score, { font: '30px Arial', fill: '#00FF00' });
-	this.scoreText2 = game.add.text(610, 9, 'score :', { font: '30px Arial', fill: '#00FF00' });
+	this.scoreText = game.add.text(710, 10, this.game.score, { font: '30px Arial', fill: '#000000' });
+	this.scoreText2 = game.add.text(610, 9, 'score :', { font: '30px Arial', fill: '#000000' });
 
 	this.explosionSound = game.add.audio('explosionSound');
 	this.explosion  = game.add.sprite(-100,-100, 'explosion');
