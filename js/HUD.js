@@ -52,6 +52,7 @@ HUD.prototype.update = function update() {
   this.hero.update();
 	this.lvlManager.update();
 	this.scoreText.setText(this.game.score);
+
 	if (this.shakeWorld > 0)
 	{
 		var rand1 = game.rnd.integerInRange(-2,2);
