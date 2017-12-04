@@ -137,6 +137,7 @@ HeroManager.prototype = {
 					if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
 						if(this._getHeroProperties() === this.heroSkinny && door.bonus) {
 							door.destroy();
+							this._incrementScore(1000);
 							door = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
 							door.animations.add('animation-bonus', [0] );
 							door.animations.play('animation-bonus');
@@ -146,7 +147,6 @@ HeroManager.prototype = {
 
 					} else if (door.bonus) {
 						this.animatedDoor = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
-			      this._incrementScore(100);
 						this.animatedDoor.animations.add('animation-bonus', [2] );
 						this.animatedDoor.animations.play('animation-bonus');
 						this.animatedDoor.bonus = true;
@@ -221,16 +221,22 @@ HeroManager.prototype = {
 			},
 
 		 _eatBurger : function(hero,burger) {
-			 this.weight = this.weight + 1;
+			 if(this.weight < 9) {
+
+				this.weight = this.weight + 1;
+		 	 }
 			 burger.kill();
-			 this._incrementScore(50);
+			 this._incrementScore(100);
 			 this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
 		 _eatVegetable : function(hero,vegetable) {
-			 this.weight = this.weight - 1;
+			 if(this.weight > 0) {
+
+			 	this.weight = this.weight - 1;
+		 	 }
 			 vegetable.kill();
-			 this._incrementScore(-10);
+			 this._incrementScore(-50);
 			 this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
@@ -239,12 +245,12 @@ HeroManager.prototype = {
     },
 
 		_getHeroProperties : function() {
-				if(this.weight > 6)
+				if(this.weight >= 6)
 				{
 					//play sprite fat
 					return this.heroFat;
 				}
-				else if (this.weight < 3)
+				else if (this.weight <= 3)
 				{
 					return this.heroSkinny;
 				}
@@ -255,7 +261,12 @@ HeroManager.prototype = {
     },
 
 		_incrementScore :function(valeur) {
+			if(this.score >= 0) {
 				this.score += valeur;
+				if(this.score <= 0) {
+					this.score = 0;
+				}
+			}
 		},
 
 		_getScore :function() {
