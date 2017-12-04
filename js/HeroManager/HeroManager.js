@@ -5,7 +5,7 @@ var HeroManager = function(game,level) {
 	this.sprite = null;
 
 	this.posX = 10;
-	this.posY = 255;
+	this.posY = 210;
 
 	this.weight = 3;
 
@@ -25,7 +25,7 @@ var HeroManager = function(game,level) {
 	this.game.camera.onFadeComplete.add(this._goToNextLvl, this);
 
 	this.doorTaken = this.game.add.group();
-
+	this.score = 0;
 }
 
 HeroManager.prototype = {
@@ -146,7 +146,7 @@ HeroManager.prototype = {
 
 					} else if (door.bonus) {
 						this.animatedDoor = this.game.add.sprite(door.x, door.y, "animation-bonus", 0);
-
+			      this._incrementScore(100);
 						this.animatedDoor.animations.add('animation-bonus', [2] );
 						this.animatedDoor.animations.play('animation-bonus');
 						this.animatedDoor.bonus = true;
@@ -223,13 +223,15 @@ HeroManager.prototype = {
 		 _eatBurger : function(hero,burger) {
 			 this.weight = this.weight + 1;
 			 burger.kill();
+			 this._incrementScore(50);
 			 this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
 		 _eatVegetable : function(hero,vegetable) {
 			 this.weight = this.weight - 1;
 			 vegetable.kill();
-			 	this._getHeroProperties().getAnimationIdle(this._getSprite());
+			 this._incrementScore(-10);
+			 this._getHeroProperties().getAnimationIdle(this._getSprite());
 		 },
 
     _getSprite : function() {
@@ -252,4 +254,11 @@ HeroManager.prototype = {
 				}
     },
 
+		_incrementScore :function(valeur) {
+				this.score += valeur;
+		},
+
+		_getScore :function() {
+				return this.score;
+		},
 }
