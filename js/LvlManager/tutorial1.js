@@ -64,8 +64,6 @@ tutorial1.prototype.create = function create() {
 		this.createVegetables();
 		this.createWalls();
 
-	  this.exit = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-	  this.exit.onDown.add(this.lvlEnding, this);
 	};
 
 
@@ -244,10 +242,6 @@ tutorial1.prototype.update = function update() {
 	this.wall1.update();
 };
 
-tutorial1.prototype.lvlEnding = function lvlEnding(){
-
-    this.wall1.getSprite().damage += 1;
-};
 
 tutorial1.prototype.getDoors = function getDoors() {
 	return this.doors;

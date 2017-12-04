@@ -288,11 +288,7 @@ tutorial2.prototype.createWalls = function createWalls() {
 tutorial2.prototype.update = function update() {
 
 	this.wall1.update();
-};
-
-tutorial2.prototype.lvlEnding = function lvlEnding(){
-
-    this.wall1.getSprite().damage += 1;
+	this.wall2.update();
 };
 
 tutorial2.prototype.getDoors = function getDoors() {
