@@ -2,7 +2,7 @@ var preload = function(game){}
 
 preload.prototype = {
 	preload: function(){
-        var loadingBar = this.add.sprite(200,240,"loading");
+        var loadingBar = this.add.sprite(0,0,"loading");
         this.load.setPreloadSprite(loadingBar);
 
     //Spritesheet
@@ -47,7 +47,7 @@ preload.prototype = {
 		game.load.audio('jumpSound', 'assets/sound/jump.mp3');
 		game.load.audio('break-wallSound', 'assets/sound/break-wall.mp3');
 		game.load.audio('eat-burgerSound', 'assets/sound/eat-burger.mp3');
-		game.load.audio('eat-legumeSound', 'assets/sound/eat-legume.mp3');
+		game.load.audio('eat-vegetableSound', 'assets/sound/eat-legume.mp3');
 		game.load.audio('porte-nokSound', 'assets/sound/porte-nok.mp3');
 		game.load.audio('porte-okSound', 'assets/sound/porte-ok.mp3');
 
