@@ -106,11 +106,10 @@ tutorial1.prototype.createSecondLine = function createSecondLine() {
 
 	this.plateform5 = new platform(this.game, 0, 300, 100);
 	this.plateform8 = new platform(this.game, 150, 300, 150);
-
+	this.plateform9 = new platform(this.game, 300, 300, 150);
 	this.plateform7 = new platform(this.game, 450, 300, 150);
 	this.plateform10 = new platform(this.game, 650, 300, 100);
 	this.plateform6 = new platform(this.game, 750, 300, 50);
-	this.plateform9 = new platform(this.game, 400, 300, 50);
 
 
 	this.plateform5.create();
@@ -175,7 +174,7 @@ tutorial1.prototype.createDoors = function createDoors() {
 	this.bonusDoor = new door(this.game, 0, 30, true);
 	this.bonusDoor.create();
 
-	this.door = new door(this.game, 750, 220, false);
+	this.door = new door(this.game, 750, 420, false);
 	this.door.create();
 
 	this.doors.add(this.bonusDoor.getSprite());
@@ -211,16 +210,16 @@ tutorial1.prototype.createBurger = function createBurger() {
 
 tutorial1.prototype.createVegetables = function createVegetables() {
 
-	this.vegetable1 = new vegetable(this.game, 650, 67);
+	this.vegetable1 = new vegetable(this.game, 650, 467);
 	this.vegetable1.create();
 
-	this.vegetable2 = new vegetable(this.game, 600, 567);
+	this.vegetable2 = new vegetable(this.game, 670, 567);
 	this.vegetable2.create();
 
-	this.vegetable3 = new vegetable(this.game, 634, 567);
+	this.vegetable3 = new vegetable(this.game, 704, 567);
 	this.vegetable3.create();
 
-	this.vegetable4 = new vegetable(this.game, 668, 567);
+	this.vegetable4 = new vegetable(this.game, 738, 567);
 	this.vegetable4.create();
 
 	this.vegetables.add(this.vegetable1.getSprite());
@@ -233,7 +232,7 @@ tutorial1.prototype.createVegetables = function createVegetables() {
 
 tutorial1.prototype.createWalls = function createWalls() {
 
-	this.wall1 = new wall(this.game, 650, 203);
+	this.wall1 = new wall(this.game, 556, 203);
 	this.wall1.create();
 
 	this.walls.add(this.wall1.getSprite());
